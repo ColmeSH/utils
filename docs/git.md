@@ -17,7 +17,7 @@ Here you can find a basic walkthrough for the creation of a new repository
 - write the command: 'git commit -am "initial-gitignore"' // to archive your chagesets
 - write the command: 'git push -u origin master' // to push your changesets to the online repository // '-u' to set the branch as default
 
-## Download M8s Changesets
+## Download Mate Changesets
 - move to your command line window and type: 'git pull'
 
 ## Check Repository Status
