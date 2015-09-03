@@ -22,3 +22,6 @@ Here you can find a basic walkthrough for the creation of a new repository
 
 ## Check Repository Status
 - move to your command line window and type: 'git status'
+
+## Create and move to a new branch
+- move to your command line window and type: 'git checkout -b nameOfTheBranch'
