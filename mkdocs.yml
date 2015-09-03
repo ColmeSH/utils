@@ -3,5 +3,6 @@ pages:
     - [index.md, Welcome]
     - [git.md, Git Utils]
     - [mongodb.md, MongoDB Utils]
+    - [python.md, Python Utils]
 
 theme: readthedocs
