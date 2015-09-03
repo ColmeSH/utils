@@ -1,7 +1,0 @@
-site_name: Utils Documentation
-pages:
-    - [index.md, Welcome]
-    - [git.md, Git Utils]
-    - [mongodb.md, MongoDB Utils]
-
-theme: readthedocs
