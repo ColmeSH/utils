@@ -11,4 +11,4 @@
 - explore changes @ andreafspeziale.github.io/utils
 
 ## Path
-- make attention to you paths, take a look to the update script and updated it to fit your needs 
+- make attention to paths, take a look to the update script and updated it to fit your needs 
