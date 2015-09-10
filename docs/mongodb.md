@@ -13,7 +13,7 @@ Here you can find a basic MongoDB commands line
 ## Kill
 - open a new command line window
 - ps -ax | grep mongo
-- use 'kill' command with the PID code that the previous command will print
+- use 'kill PID' code that the previous command will print
 
 ## Shell
 - open a new command line window
