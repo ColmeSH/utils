@@ -6,6 +6,15 @@ Here you can find a basic MongoDB commands line
 - open a new command line window
 - type: mongod
 
+## Check if is running
+- open a new command line window
+- ps -ax | grep mongo
+
+## Kill
+- open a new command line window
+- ps -ax | grep mongo
+- use 'kill' command with the PID code that the previous command will print
+
 ## Shell
 - open a new command line window
 - type: mongo
