@@ -2,7 +2,7 @@ site_name: Utils Documentation
 pages:
     - [index.md, Welcome]
     - [git.md, Git Utils]
-    - [mongodb.md, MongoDB Utils]
+    - [mongodb.md, Mongo DB Utils]
     - [python.md, Python Utils]
 
 theme: readthedocs
