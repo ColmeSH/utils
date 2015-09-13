@@ -8,7 +8,4 @@
 - make changes
 - commit and push changes on master
 - run udpdate sh: sh update.sh
-- explore changes @ andreafspeziale.github.io/utils
-
-## Path
-- make attention to paths, take a look to the update script and updated it to fit your needs 
+- explore changes @ andreafspeziale.github.io/utils 
