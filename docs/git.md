@@ -28,3 +28,6 @@ Here you can find a basic walkthrough for the creation of a new repository
 
 ## Create and move to a new branch
 - move to your command line window and type: 'git checkout -b nameOfTheBranch'
+
+## Delete file from repo  
+- move to your command line window and type: 'git rm fileName' // git commit -m "remove fileName" (it will remove the file locally too)
