@@ -1,4 +1,4 @@
-site_name: Utils Documentation
+site_name: Documentation
 pages:
     - [index.md, Welcome]
     - [git.md, Git Utils]
