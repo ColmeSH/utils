@@ -5,4 +5,4 @@ pages:
     - [mongodb.md, Mongo DB Utils]
     - [python.md, Python Utils]
 
-theme: simplex
+theme: slate
