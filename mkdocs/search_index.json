@@ -2,7 +2,7 @@
     "docs": [
         {
             "location": "/", 
-            "text": "Welcome to Utils Documentation\n\n\nIn this documentation you will find useful commands line for Git, MongoDB and more\n\n\nRequirements\n\n\n\n\nMAC OSX\n\n\nMongoDB\n{:target=\"_blank\"}\n\n\nMongoDB\n\n\nGit\n{:target=\"_blank\"}\n\n\nPython\n{:target=\"_blank\"}\n\n\n\n\nNotes\n\n\n\n\nThis documentation has been generated with MKDOCS, \ntake a look", 
+            "text": "Welcome to Utils Documentation\n\n\nIn this documentation you will find useful commands line for Git, MongoDB and more\n\n\nRequirements\n\n\n\n\nMAC OSX\n\n\nMongoDB\n\n\nGit\n\n\nPython\n\n\n\n\nNotes\n\n\n\n\nThis documentation has been generated with MKDOCS, \ntake a look", 
             "title": "Welcome"
         }, 
         {
@@ -12,7 +12,7 @@
         }, 
         {
             "location": "/#requirements", 
-            "text": "MAC OSX  MongoDB {:target=\"_blank\"}  MongoDB  Git {:target=\"_blank\"}  Python {:target=\"_blank\"}", 
+            "text": "MAC OSX  MongoDB  Git  Python", 
             "title": "Requirements"
         }, 
         {
