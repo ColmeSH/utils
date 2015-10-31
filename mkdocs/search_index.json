@@ -2,18 +2,23 @@
     "docs": [
         {
             "location": "/", 
-            "text": "Welcome to Utils Documentation\n\n\nHey! Welcome to my personal documentation.\nYou will find useful tips for Git, MongoDB and more...\n\n\nIt's very easy to use and customize.\n\n\nYou can clone it and use it for yourself by simply changing the remote path of the repo,\nmaking your changes, pushing it to master and then running the update script.\n\n\nOr you can just fork the repo and add your contribution with other useful tips!     \n\n\nRequirements\n\n\n\n\nMAC OSX or a linux based OS\n\n\nMKDOCS\n\n\nMongoDB\n\n\nGit\n\n\nPython", 
+            "text": "Welcome to Utils Documentation\n\n\nHey thank you for enjoying to my personal documentation.\nYou will find useful tips for Git, MongoDB and more...    \n\n\nRequirements\n\n\n\n\nMAC OSX or a linux based OS\n\n\nMKDOCS\n\n\nMongoDB\n\n\nGit\n\n\nPython\n\n\n\n\nContributing\n\n\nThis documentation it's very easy to use and customize.\n\n\nYou can clone it and use it for yourself by simply changing the remote path of the repo,\nmaking your changes, pushing it to master and then running the update script.\n\n\nOr you can just fork the repo and add your contribution with other useful tips!", 
             "title": "Welcome"
         }, 
         {
             "location": "/#welcome-to-utils-documentation", 
-            "text": "Hey! Welcome to my personal documentation.\nYou will find useful tips for Git, MongoDB and more...  It's very easy to use and customize.  You can clone it and use it for yourself by simply changing the remote path of the repo,\nmaking your changes, pushing it to master and then running the update script.  Or you can just fork the repo and add your contribution with other useful tips!", 
+            "text": "Hey thank you for enjoying to my personal documentation.\nYou will find useful tips for Git, MongoDB and more...", 
             "title": "Welcome to Utils Documentation"
         }, 
         {
             "location": "/#requirements", 
             "text": "MAC OSX or a linux based OS  MKDOCS  MongoDB  Git  Python", 
             "title": "Requirements"
+        }, 
+        {
+            "location": "/#contributing", 
+            "text": "This documentation it's very easy to use and customize.  You can clone it and use it for yourself by simply changing the remote path of the repo,\nmaking your changes, pushing it to master and then running the update script.  Or you can just fork the repo and add your contribution with other useful tips!", 
+            "title": "Contributing"
         }, 
         {
             "location": "/git/", 
