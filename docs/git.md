@@ -1,6 +1,6 @@
 # Git Utils
 
-Here you can find a basic walkthrough for the creation of a new repository
+Here you can find a basic walkthrough for the creation of a new Git repository
 
 ## GitHub
 - go to github.com and create an account

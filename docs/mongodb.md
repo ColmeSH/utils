@@ -1,6 +1,6 @@
 # Mongo DB Utils
 
-Here you can find a basic MongoDB commands line
+Here you can find a basic MongoDB commands line.
 
 ## Run
 - open a new command line window
