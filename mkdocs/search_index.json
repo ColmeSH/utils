@@ -2,7 +2,7 @@
     "docs": [
         {
             "location": "/", 
-            "text": "Welcome to Utils Documentation\n\n\nHey thank you for enjoying to my personal documentation.\nYou will find useful tips for Git, MongoDB and more...    \n\n\nRequirements\n\n\n\n\nMAC OSX or a linux based OS\n\n\nMKDOCS\n\n\nMongoDB\n\n\nGit\n\n\nPython\n\n\n\n\nContributing\n\n\nThis documentation it's very easy to use and customize.\n\n\nYou can clone it and use it for yourself by simply changing the remote path of the repo,\nmaking your changes, pushing it to master and then running the update script.\n\n\nOr you can just fork the repo and add your contribution with other useful tips!", 
+            "text": "Welcome to Utils Documentation\n\n\nHey thank you for enjoying to my personal documentation.\nYou will find useful tips for Git, MongoDB and more...    \n\n\nRequirements\n\n\n\n\nMAC OSX or a linux based OS\n\n\nMKDOCS\n\n\nMongoDB\n\n\nGit\n\n\nPython\n\n\n\n\nContributing\n\n\nThis documentation it's very easy to use and customize.\n\n\nYou can clone it and use it for yourself by simply changing the remote path of the repo,\nmaking your changes, pushing it to master and then running the update script.\n\n\nOr you can just fork the repo and add your contribution with other useful tips!\n\n\nGh-Pages\n\n\nDo the magic!\n\n\nIt's an amazing service provided by GitHub that allow users\nto explore and display their projects directly from GitHub website by simply\ncreating a gh-pages branch and pushing the code on it.\n\n\nUsers will be able to explore the project from a link like\nyourGitHubUsername.github.io/repositoryName.\n\nLearn more.", 
             "title": "Welcome"
         }, 
         {
@@ -19,6 +19,11 @@
             "location": "/#contributing", 
             "text": "This documentation it's very easy to use and customize.  You can clone it and use it for yourself by simply changing the remote path of the repo,\nmaking your changes, pushing it to master and then running the update script.  Or you can just fork the repo and add your contribution with other useful tips!", 
             "title": "Contributing"
+        }, 
+        {
+            "location": "/#gh-pages", 
+            "text": "Do the magic!  It's an amazing service provided by GitHub that allow users\nto explore and display their projects directly from GitHub website by simply\ncreating a gh-pages branch and pushing the code on it.  Users will be able to explore the project from a link like\nyourGitHubUsername.github.io/repositoryName. Learn more.", 
+            "title": "Gh-Pages"
         }, 
         {
             "location": "/git/", 
