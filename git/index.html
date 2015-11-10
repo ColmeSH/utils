@@ -99,6 +99,10 @@
     
         <li class="main active"><a href="#git-utils">Git Utils</a></li>
         
+            <li><a href="#install-git">Install Git</a></li>
+        
+            <li><a href="#local-global-configuration">Local Global Configuration</a></li>
+        
             <li><a href="#github">GitHub</a></li>
         
             <li><a href="#new-repository">New Repository</a></li>
@@ -120,43 +124,65 @@
 
 <h1 id="git-utils">Git Utils</h1>
 <p>Here you can find a basic walkthrough for the creation of a new Git repository</p>
+<h2 id="install-git">Install Git</h2>
+<p>If you don't have git installed you will need also to install brew package manager:</p>
+<pre><code>- ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+- brew install git
+</code></pre>
+<h2 id="local-global-configuration">Local Global Configuration</h2>
+<p>From anyway</p>
+<pre><code>- git config --global user.name &lt;NAME&gt;
+
+- git config --global user.email &lt;EMAIL&gt;
+</code></pre>
 <h2 id="github">GitHub</h2>
-<ul>
-<li>go to github.com and create an account</li>
-</ul>
+<p>Go to github.com and create an account</p>
 <h2 id="new-repository">New Repository</h2>
-<ul>
-<li>log to your account on github</li>
-<li>create a repository</li>
-<li>create a new folder wherever you want into your computer</li>
-<li>navigate to the folder root from your command line</li>
-<li>write the command: 'git init .'</li>
-<li>create a new file with vim command: 'vim .gitignore' // press 'i' and insert the file or folder you want to not track with git</li>
-<li>write the command: 'git remote add origin git@github.com:MyUsername/nameOfTheOnlineRepo.git'</li>
-<li>write the command: 'git add .' // to start tracking the files</li>
-<li>write the command: 'git commit -am "initial-gitignore"' // to archive your chagesets</li>
-<li>write the command: 'git push -u origin master' // to push your changesets to the online repository // '-u' to set the branch as default</li>
-</ul>
+<p>To create a new repository:</p>
+<pre><code>- log to your account on github
+
+- create a repository
+
+- create a new folder wherever you want into your computer
+
+- navigate to the folder root from your command line
+
+- write the command: 'git init .'
+
+- create a new file with vim command: 'vim .gitignore' // press 'i' and insert the file or folder you want to not track with git
+
+- write the command: 'git remote add origin git@github.com:MyUsername/nameOfTheOnlineRepo.git'
+
+- write the command: 'git add .' // to start tracking the files
+
+- write the command: 'git commit -am "initial-gitignore"' // to archive your chagesets
+
+- write the command: 'git push -u origin master' // to push your changesets to the online repository // '-u' to set the branch as default
+</code></pre>
 <h2 id="download-mate-changesets">Download Mate Changesets</h2>
-<ul>
-<li>move to your command line window and type: 'git pull'</li>
-</ul>
+<p>Move to your command line window and type:</p>
+<pre><code>- 'git pull'
+</code></pre>
 <h2 id="check-repository-status">Check Repository Status</h2>
-<ul>
-<li>move to your command line window and type: 'git status'</li>
-</ul>
+<p>Move to your command line window and type:</p>
+<pre><code>- 'git status'
+</code></pre>
 <h2 id="list-branch">List branch</h2>
-<ul>
-<li>move to your command line window and type: 'git branch'</li>
-</ul>
+<p>Move to your command line window and type:</p>
+<pre><code>- 'git branch -a'
+</code></pre>
 <h2 id="create-and-move-to-a-new-branch">Create and move to a new branch</h2>
-<ul>
-<li>move to your command line window and type: 'git checkout -b nameOfTheBranch'</li>
-</ul>
+<p>Move to your command line window and type:</p>
+<pre><code>- 'git checkout -b nameOfTheBranch'
+
+- git push &lt;remote-name&gt; &lt;branch-name&gt;
+</code></pre>
 <h2 id="delete-file-from-repo">Delete file from repo</h2>
-<ul>
-<li>move to your command line window and type: 'git rm fileName' // git commit -m "remove fileName" (it will remove the file locally too)</li>
-</ul></div>
+<p>Move to your command line window and type:</p>
+<pre><code>- 'git rm fileName'
+
+- git commit -m "remove fileName"
+</code></pre></div>
         </div>
 
         <footer class="col-md-12">
