@@ -24,7 +24,7 @@ It will install for you Setuptools & Pip
 
 ## Check Virtual Environments Installed Packages
 
-    - pip freeze
+    - 'pip freeze'
 
 ## Run Simple Server
 
