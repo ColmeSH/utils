@@ -172,17 +172,17 @@
         }, 
         {
             "location": "/python/", 
-            "text": "Python Utils\n\n\nHere you can find a lot of Python tips\n\n\nRun Simple Server\n\n\nMove to your command line window and type and navigate to your project root:\n\n\n-'python -m SimpleHTTPServer 8000'", 
+            "text": "Python Utils\n\n\nHere you can find a list of Python tips\n\n\nRun Simple Server\n\n\nMove to your command line window and navigate to your project root:\n\n\n-'python -m SimpleHTTPServer 8000'", 
             "title": "Python Utils"
         }, 
         {
             "location": "/python/#python-utils", 
-            "text": "Here you can find a lot of Python tips", 
+            "text": "Here you can find a list of Python tips", 
             "title": "Python Utils"
         }, 
         {
             "location": "/python/#run-simple-server", 
-            "text": "Move to your command line window and type and navigate to your project root:  -'python -m SimpleHTTPServer 8000'", 
+            "text": "Move to your command line window and navigate to your project root:  -'python -m SimpleHTTPServer 8000'", 
             "title": "Run Simple Server"
         }
     ]
