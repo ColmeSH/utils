@@ -1,4 +1,4 @@
-site_name: US
+site_name: UD
 pages:
     - [index.md, Welcome]
     - [git.md, Git Utils]
