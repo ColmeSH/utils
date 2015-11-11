@@ -5,7 +5,7 @@ You will find useful tips for Git, MongoDB and more...
 
 ## Requirements
 
-MAC OSX or a linux based OS
+    MAC OSX or a linux based OS
 
 ## Useful Links for Installation and More
 
