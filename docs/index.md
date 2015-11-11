@@ -9,15 +9,15 @@ You will find useful tips for Git, MongoDB and more...
 
 ## Useful Links for Installation and More
 
-    [Git](https://git-scm.com/)
+[Git](https://git-scm.com/)
 
-    [Grunt](http://gruntjs.com/getting-started)
+[Grunt](http://gruntjs.com/getting-started)
 
-    [MongoDB](http://docs.mongodb.org/manual/tutorial/install-mongodb-on-os-x/)
+[MongoDB](http://docs.mongodb.org/manual/tutorial/install-mongodb-on-os-x/)
 
-    [Python](https://www.python.org/)
+[Python](https://www.python.org/)
 
-    [MKDOCS](http://www.mkdocs.org/)
+[MKDOCS](http://www.mkdocs.org/)
 
 ## Contributing
 
