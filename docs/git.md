@@ -6,16 +6,16 @@ Here you can find a basic walkthrough for the creation of a new Git repository
 
 If you don't have git installed you will need also to install brew package manager:
 
-    - ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-    - brew install git
+    - 'ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"'
+    - 'brew install git'
 
 ## Local Global Configuration
 
-From anyway
+From anyway on your command line:
 
-    - git config --global user.name <NAME>
+    - 'git config --global user.name <NAME>'
 
-    - git config --global user.email <EMAIL>
+    - 'git config --global user.email <EMAIL>'
 
 ## GitHub
 
