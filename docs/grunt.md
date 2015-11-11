@@ -157,3 +157,7 @@ This example is based on a MEAN Stack application:
     // DEFAULT RUN TASK DECLARATION (DEFAULT IS RUNNING SIMPLY BY LAUNCHING GRUNT)
     grunt.registerTask('default', ['wiredep', 'imagemin', 'concat_css', 'cssmin', 'concat', 'uglify', 'concurrent']);
     }
+
+##Notes
+
+You can fin a lot of useful task to automate more things like css compilers and more! Check on Google
