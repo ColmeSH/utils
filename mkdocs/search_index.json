@@ -2,7 +2,7 @@
     "docs": [
         {
             "location": "/", 
-            "text": "Welcome to Utils Documentation\n\n\nHey thank you for enjoying to my personal documentation.\nYou will find useful tips for Git, MongoDB and more...    \n\n\nRequirements\n\n\n\n\nMAC OSX or a linux based OS\n\n\nMKDOCS\n\n\nMongoDB\n\n\nGit\n\n\nPython\n\n\n\n\nContributing\n\n\nThis documentation it's very easy to use and customize.\n\n\nYou can clone it and use it for yourself by simply changing the remote path of the repo,\nmaking your changes, pushing it to master and then running the update script.\n\n\nOr you can just fork the repo and add your contribution with other useful tips!\n\n\nGh-Pages\n\n\nDo the magic!\n\n\nIt's an amazing service provided by GitHub that allow users\nto explore and display their projects directly from GitHub website by simply\ncreating a gh-pages branch and pushing the code on it.\n\n\nUsers will be able to explore the project from a link like\nyourGitHubUsername.github.io/repositoryName.\n\nLearn more.", 
+            "text": "Welcome to Utils Documentation\n\n\nHey thank you for enjoying to my personal documentation.\nYou will find useful tips for Git, MongoDB and more...    \n\n\nRequirements\n\n\n- MAC OSX or a linux based OS\n\n\n\nUseful Links\n\n\n- \na href=\"http://www.mkdocs.org/\" target=\"_blank\"\nMKDOCS\n/a\n\n\n- \na href=\"http://docs.mongodb.org/manual/tutorial/install-mongodb-on-os-x/\" target=\"_blank\"\nMongoDB\n/a\n\n\n- \na href=\"https://git-scm.com/\" target=\"_blank\"\nGit\n/a\n\n\n- \na href=\"https://www.python.org/\" target=\"_blank\"\nPython\n/a\n\n\n\n\nContributing\n\n\nThis documentation it's very easy to use and customize.\n\n\nYou can clone it and use it for yourself by simply changing the remote path of the repo,\nmaking your changes, pushing it to master and then running the update script.\n\n\nOr you can just fork the repo and add your contribution with other useful tips!\n\n\nGh-Pages\n\n\nDo the magic!\n\n\nIt's an amazing service provided by GitHub that allow users\nto explore and display their projects directly from GitHub website by simply\ncreating a gh-pages branch and pushing the code on it.\n\n\nUsers will be able to explore the project from a link like\nyourGitHubUsername.github.io/repositoryName.\n\nLearn more.", 
             "title": "Welcome"
         }, 
         {
@@ -12,8 +12,13 @@
         }, 
         {
             "location": "/#requirements", 
-            "text": "MAC OSX or a linux based OS  MKDOCS  MongoDB  Git  Python", 
+            "text": "- MAC OSX or a linux based OS", 
             "title": "Requirements"
+        }, 
+        {
+            "location": "/#useful-links", 
+            "text": "-  a href=\"http://www.mkdocs.org/\" target=\"_blank\" MKDOCS /a \n\n-  a href=\"http://docs.mongodb.org/manual/tutorial/install-mongodb-on-os-x/\" target=\"_blank\" MongoDB /a \n\n-  a href=\"https://git-scm.com/\" target=\"_blank\" Git /a \n\n-  a href=\"https://www.python.org/\" target=\"_blank\" Python /a", 
+            "title": "Useful Links"
         }, 
         {
             "location": "/#contributing", 
@@ -27,7 +32,7 @@
         }, 
         {
             "location": "/git/", 
-            "text": "Git Utils\n\n\nHere you can find a basic walkthrough for the creation of a new Git repository\n\n\nInstall Git\n\n\nIf you don't have git installed you will need also to install brew package manager:\n\n\n- 'ruby -e \"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)\"'\n- 'brew install git'\n\n\n\nLocal Global Configuration\n\n\nFrom anyway on your command line:\n\n\n- 'git config --global user.name \nNAME\n'\n\n- 'git config --global user.email \nEMAIL\n'\n\n\n\nGitHub\n\n\nGo to github.com and create an account\n\n\nNew Repository\n\n\nTo create a new repository:\n\n\n- log to your account on github\n\n- create a repository\n\n- create a new folder wherever you want into your computer\n\n- navigate to the folder root from your command line\n\n- write the command: 'git init .'\n\n- create a new file with vim command: 'vim .gitignore' // press 'i' and insert the file or folder you want to not track with git\n\n- write the command: 'git remote add origin git@github.com:MyUsername/nameOfTheOnlineRepo.git'\n\n- write the command: 'git add .' // to start tracking the files\n\n- write the command: 'git commit -am \"initial-gitignore\"' // to archive your chagesets\n\n- write the command: 'git push -u origin master' // to push your changesets to the online repository // '-u' to set the branch as default\n\n\n\nDownload Mate Changesets\n\n\nMove to your command line window and type:\n\n\n- 'git pull'\n\n\n\nCheck Repository Status\n\n\nMove to your command line window and type:\n\n\n- 'git status'\n\n\n\nList branch\n\n\nMove to your command line window and type:\n\n\n- 'git branch -a'\n\n\n\nCreate and move to a new branch\n\n\nMove to your command line window and type:\n\n\n- 'git checkout -b nameOfTheBranch'\n\n- git push \nremote-name\n \nbranch-name\n\n\n\n\nDelete file from repo\n\n\nMove to your command line window and type:\n\n\n- 'git rm fileName'\n\n- git commit -m \"remove fileName\"", 
+            "text": "Git Utils\n\n\nHere you can find a basic walkthrough for the creation of a new Git repository\n\n\nInstall Git\n\n\nIf you don't have git installed you will need also to install brew package manager:\n\n\n- 'ruby -e \"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)\"'\n- 'brew install git'\n\n\n\nLocal Global Configuration\n\n\nFrom anyway on your command line:\n\n\n- 'git config --global user.name \nNAME\n'\n\n- 'git config --global user.email \nEMAIL\n'\n\n\n\nGitHub\n\n\nGo to github.com and create an account\n\n\nNew Repository\n\n\nTo create a new repository:\n\n\n- log to your account on github\n\n- create a repository\n\n- create a new folder wherever you want into your computer\n\n- navigate to the folder root from your command line\n\n- write the command: 'git init .'\n\n- create a new file with vim command: 'vim .gitignore' // press 'i' and insert the file or folder you want to not track with git\n\n- write the command: 'git remote add origin git@github.com:MyUsername/nameOfTheOnlineRepo.git'\n\n- write the command: 'git add .' // to start tracking the files\n\n- write the command: 'git commit -am \"initial-gitignore\"' // to archive your chagesets\n\n- write the command: 'git push -u origin master' // to push your changesets to the online repository // '-u' to set the branch as default\n\n\n\nDownload Mate Changesets\n\n\nMove to your command line window and type:\n\n\n- 'git pull'\n\n\n\nCheck Repository Status\n\n\nMove to your command line window and type:\n\n\n- 'git status'\n\n\n\nList branch\n\n\nMove to your command line window and type:\n\n\n- 'git branch -a'\n\n\n\nCreate and move to a new branch\n\n\nMove to your command line window and type:\n\n\n- 'git checkout -b nameOfTheBranch'\n\n- git push \nremote-name\n \nbranch-name\n\n\n\n\nMerging\n\n\nMove from the developing branch to the one which you want to import changesets:\n\n\n- 'git merge nameOfTheBranch'\n\n\n\nDelete file from repo\n\n\nMove to your command line window and type:\n\n\n- 'git rm fileName'\n\n- git commit -m \"remove fileName\"", 
             "title": "Git Utils"
         }, 
         {
@@ -76,13 +81,18 @@
             "title": "Create and move to a new branch"
         }, 
         {
+            "location": "/git/#merging", 
+            "text": "Move from the developing branch to the one which you want to import changesets:  - 'git merge nameOfTheBranch'", 
+            "title": "Merging"
+        }, 
+        {
             "location": "/git/#delete-file-from-repo", 
             "text": "Move to your command line window and type:  - 'git rm fileName'\n\n- git commit -m \"remove fileName\"", 
             "title": "Delete file from repo"
         }, 
         {
             "location": "/mongodb/", 
-            "text": "Mongo DB Utils\n\n\nHere you can find a basic MongoDB commands line\n\n\n\n\nIf you don't have git installed you will need also to install brew package manager:\n\n\n- 'ruby -e \"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)\"'\n- 'brew install mongodb'\n\n\n\nRun\n\n\nIf you don't have git installed you will need also to install brew package manager:\n\n\n- 'mongod'\n\n\n\nCheck if is Running\n\n\nTo check if you have any mongo instance running:\n\n\n- 'ps -ax | grep mongo'\n\n\n\nKill Mongo Instance\n\n\nMove to your command line window and type:\n\n\n- use 'kill PID' code that the previous Check if is Running command provide\n\n\n\nShell\n\n\nMove to your command line window and type:\n\n\n- 'mongo'\n\n\n\nDB List\n\n\nFrom the mongo opened shell:\n\n\n- 'show dbs'\n\n\n\nUse/Create DB\n\n\nFrom the mongo opened shell:\n\n\n- 'use nameOfYourDB' (if the DB doesn't exist mongo will move you to a new one, but it will not be totally created until you make an insert)\n\n\n\nCollections List\n\n\nFrom the mongo opened shell:\n\n\n- 'show collections'\n\n\n\nCreate a new Document / Collection ('tables')\n\n\nFrom the mongo opened shell:\n\n\n- 'db.nameOfTheDocument.insert({\"key1\":\"value1\", \"key2\": \"value2\"})'\n\n\n\nQuery all Document Entries\n\n\nFrom the mongo opened shell:\n\n\n- 'db.nameOfTheDocument.find().pretty()'\n\n\n\nFiltered Query\n\n\nFrom the mongo opened shell:\n\n\n- 'db.nameOfTheDocument.find({ \"key1\": \"value1\"})'\n\n\n\nUpdate Document\n\n\nFrom the mongo opened shell:\n\n\n- 'db.nameOfTheDocument.update({\"key1\": \"value1\"}, { $set: {\"key2\": \"value2\"}})'\n\n\n\nDeleting a Document\n\n\nFrom the mongo opened shell:\n\n\n- 'db.nameOfTheDocument.drop()'\n\n\n\nDeleting Multiple Documents Entries\n\n\nFrom the mongo opened shell:\n\n\n- 'db.nameOfTheDocument.remove({ \"key1\": \"value1\" })'\n\n\n\nDeleting DB\n\n\nFrom the mongo opened shell and make sure you are using the DB that you want to delete typing 'use nameOfYourDB':\n\n\n\n\n'db.dropDatabase()'", 
+            "text": "Mongo DB Utils\n\n\nHere you can find a basic MongoDB commands line\n\n\n\n\nIf you don't have git installed you will need also to install brew package manager:\n\n\n- 'ruby -e \"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)\"'\n- 'brew install mongodb'\n\n\n\nRun\n\n\nIf you don't have git installed you will need also to install brew package manager:\n\n\n- 'mongod'\n\n\n\nCheck if is Running\n\n\nTo check if you have any mongo instance running:\n\n\n- 'ps -ax | grep mongo'\n\n\n\nKill Mongo Instance\n\n\nMove to your command line window and type:\n\n\n- use 'kill PID' code that the previous Check if is Running command provide\n\n\n\nShell\n\n\nMove to your command line window and type:\n\n\n- 'mongo'\n\n\n\nDB List\n\n\nFrom the mongo opened shell:\n\n\n- 'show dbs'\n\n\n\nUse/Create DB\n\n\nFrom the mongo opened shell:\n\n\n- 'use nameOfYourDB' (if the DB doesn't exist mongo will move you to a new one, but it will not be totally created until you make an insert)\n\n\n\nCollections List\n\n\nFrom the mongo opened shell:\n\n\n- 'show collections'\n\n\n\nCreate a new Document / Collection ('tables')\n\n\nFrom the mongo opened shell:\n\n\n- 'db.nameOfTheDocument.insert({\"key1\":\"value1\", \"key2\": \"value2\"})'\n\n\n\nQuery all Document Entries\n\n\nFrom the mongo opened shell:\n\n\n- 'db.nameOfTheDocument.find().pretty()'\n\n\n\nFiltered Query\n\n\nFrom the mongo opened shell:\n\n\n- 'db.nameOfTheDocument.find({ \"key1\": \"value1\"})'\n\n\n\nUpdate Document\n\n\nFrom the mongo opened shell:\n\n\n- 'db.nameOfTheDocument.update({\"key1\": \"value1\"}, { $set: {\"key2\": \"value2\"}})'\n\n\n\nDeleting a Document\n\n\nFrom the mongo opened shell:\n\n\n- 'db.nameOfTheDocument.drop()'\n\n\n\nDeleting Multiple Documents Entries\n\n\nFrom the mongo opened shell:\n\n\n- 'db.nameOfTheDocument.remove({ \"key1\": \"value1\" })'\n\n\n\nDeleting DB\n\n\nFrom the mongo opened shell and make sure you are using the DB that you want to delete typing 'use nameOfYourDB':\n\n\n- 'db.dropDatabase()'", 
             "title": "Mongo DB Utils"
         }, 
         {
@@ -157,22 +167,22 @@
         }, 
         {
             "location": "/mongodb/#deleting-db", 
-            "text": "From the mongo opened shell and make sure you are using the DB that you want to delete typing 'use nameOfYourDB':   'db.dropDatabase()'", 
+            "text": "From the mongo opened shell and make sure you are using the DB that you want to delete typing 'use nameOfYourDB':  - 'db.dropDatabase()'", 
             "title": "Deleting DB"
         }, 
         {
             "location": "/python/", 
-            "text": "Python Utils\n\n\nHere you can find a lot of Python tips.\n\n\nRun Simple Server\n\n\n\n\nmove to your command line window and type: 'python -m SimpleHTTPServer 8000'", 
+            "text": "Python Utils\n\n\nHere you can find a lot of Python tips\n\n\nRun Simple Server\n\n\nMove to your command line window and type and navigate to your project root:\n\n\n-'python -m SimpleHTTPServer 8000'", 
             "title": "Python Utils"
         }, 
         {
             "location": "/python/#python-utils", 
-            "text": "Here you can find a lot of Python tips.", 
+            "text": "Here you can find a lot of Python tips", 
             "title": "Python Utils"
         }, 
         {
             "location": "/python/#run-simple-server", 
-            "text": "move to your command line window and type: 'python -m SimpleHTTPServer 8000'", 
+            "text": "Move to your command line window and type and navigate to your project root:  -'python -m SimpleHTTPServer 8000'", 
             "title": "Run Simple Server"
         }
     ]
