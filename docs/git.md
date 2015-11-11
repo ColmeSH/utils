@@ -71,6 +71,12 @@ Move to your command line window and type:
 
     - git push <remote-name> <branch-name>
 
+## Merging
+
+Move from the developing branch to the one which you want to import changesets:
+
+    - 'git merge nameOfTheBranch'
+
 ## Delete file from repo  
 
 Move to your command line window and type:

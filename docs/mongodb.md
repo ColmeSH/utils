@@ -91,4 +91,4 @@ From the mongo opened shell:
 
 From the mongo opened shell and make sure you are using the DB that you want to delete typing 'use nameOfYourDB':
 
-- 'db.dropDatabase()'
+    - 'db.dropDatabase()'

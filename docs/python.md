@@ -1,6 +1,9 @@
 # Python Utils
 
-Here you can find a lot of Python tips.
+Here you can find a lot of Python tips
 
 ## Run Simple Server
-- move to your command line window and type: 'python -m SimpleHTTPServer 8000'
+
+Move to your command line window and type and navigate to your project root:
+
+    -'python -m SimpleHTTPServer 8000'

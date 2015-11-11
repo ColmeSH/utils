@@ -4,11 +4,18 @@ Hey thank you for enjoying to my personal documentation.
 You will find useful tips for Git, MongoDB and more...    
 
 ## Requirements
-- MAC OSX or a linux based OS
-- <a href="http://www.mkdocs.org/" target="_blank">MKDOCS</a>
-- <a href="http://docs.mongodb.org/manual/tutorial/install-mongodb-on-os-x/" target="_blank">MongoDB</a>
-- <a href="https://git-scm.com/" target="_blank">Git</a>
-- <a href="https://www.python.org/" target="_blank">Python</a>
+
+    - MAC OSX or a linux based OS
+
+## Useful Links
+
+    - <a href="http://www.mkdocs.org/" target="_blank">MKDOCS</a>
+
+    - <a href="http://docs.mongodb.org/manual/tutorial/install-mongodb-on-os-x/" target="_blank">MongoDB</a>
+
+    - <a href="https://git-scm.com/" target="_blank">Git</a>
+
+    - <a href="https://www.python.org/" target="_blank">Python</a>
 
 ## Contributing
 
