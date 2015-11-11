@@ -7,17 +7,17 @@ You will find useful tips for Git, MongoDB and more...
 
     - MAC OSX or a linux based OS
 
-## Useful Links
+## Useful Links for Installation and More
 
-    <a href="https://git-scm.com/" target="_blank">Git</a>
+    - [Git](https://git-scm.com/)
 
-    <a href="http://gruntjs.com/getting-started" target="_blank">Grunt</a>
+    - [Grunt](http://gruntjs.com/getting-started)
 
-    <a href="http://docs.mongodb.org/manual/tutorial/install-mongodb-on-os-x/" target="_blank">MongoDB</a>
+    - [MongoDB](http://docs.mongodb.org/manual/tutorial/install-mongodb-on-os-x/)
 
-    <a href="https://www.python.org/" target="_blank">Python</a>
+    - [Python](https://www.python.org/)
 
-    <a href="http://www.mkdocs.org/" target="_blank">MKDOCS</a>
+    - [MKDOCS](http://www.mkdocs.org/)
 
 ## Contributing
 
