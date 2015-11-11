@@ -27,7 +27,7 @@
         }, 
         {
             "location": "/git/", 
-            "text": "Git Utils\n\n\nHere you can find a basic walkthrough for the creation of a new Git repository\n\n\nInstall Git\n\n\nIf you don't have git installed you will need also to install brew package manager:\n\n\n- ruby -e \"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)\"\n- brew install git\n\n\n\nLocal Global Configuration\n\n\nFrom anyway\n\n\n- git config --global user.name \nNAME\n\n\n- git config --global user.email \nEMAIL\n\n\n\n\nGitHub\n\n\nGo to github.com and create an account\n\n\nNew Repository\n\n\nTo create a new repository:\n\n\n- log to your account on github\n\n- create a repository\n\n- create a new folder wherever you want into your computer\n\n- navigate to the folder root from your command line\n\n- write the command: 'git init .'\n\n- create a new file with vim command: 'vim .gitignore' // press 'i' and insert the file or folder you want to not track with git\n\n- write the command: 'git remote add origin git@github.com:MyUsername/nameOfTheOnlineRepo.git'\n\n- write the command: 'git add .' // to start tracking the files\n\n- write the command: 'git commit -am \"initial-gitignore\"' // to archive your chagesets\n\n- write the command: 'git push -u origin master' // to push your changesets to the online repository // '-u' to set the branch as default\n\n\n\nDownload Mate Changesets\n\n\nMove to your command line window and type:\n\n\n- 'git pull'\n\n\n\nCheck Repository Status\n\n\nMove to your command line window and type:\n\n\n- 'git status'\n\n\n\nList branch\n\n\nMove to your command line window and type:\n\n\n- 'git branch -a'\n\n\n\nCreate and move to a new branch\n\n\nMove to your command line window and type:\n\n\n- 'git checkout -b nameOfTheBranch'\n\n- git push \nremote-name\n \nbranch-name\n\n\n\n\nDelete file from repo\n\n\nMove to your command line window and type:\n\n\n- 'git rm fileName'\n\n- git commit -m \"remove fileName\"", 
+            "text": "Git Utils\n\n\nHere you can find a basic walkthrough for the creation of a new Git repository\n\n\nInstall Git\n\n\nIf you don't have git installed you will need also to install brew package manager:\n\n\n- 'ruby -e \"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)\"'\n- 'brew install git'\n\n\n\nLocal Global Configuration\n\n\nFrom anyway on your command line:\n\n\n- 'git config --global user.name \nNAME\n'\n\n- 'git config --global user.email \nEMAIL\n'\n\n\n\nGitHub\n\n\nGo to github.com and create an account\n\n\nNew Repository\n\n\nTo create a new repository:\n\n\n- log to your account on github\n\n- create a repository\n\n- create a new folder wherever you want into your computer\n\n- navigate to the folder root from your command line\n\n- write the command: 'git init .'\n\n- create a new file with vim command: 'vim .gitignore' // press 'i' and insert the file or folder you want to not track with git\n\n- write the command: 'git remote add origin git@github.com:MyUsername/nameOfTheOnlineRepo.git'\n\n- write the command: 'git add .' // to start tracking the files\n\n- write the command: 'git commit -am \"initial-gitignore\"' // to archive your chagesets\n\n- write the command: 'git push -u origin master' // to push your changesets to the online repository // '-u' to set the branch as default\n\n\n\nDownload Mate Changesets\n\n\nMove to your command line window and type:\n\n\n- 'git pull'\n\n\n\nCheck Repository Status\n\n\nMove to your command line window and type:\n\n\n- 'git status'\n\n\n\nList branch\n\n\nMove to your command line window and type:\n\n\n- 'git branch -a'\n\n\n\nCreate and move to a new branch\n\n\nMove to your command line window and type:\n\n\n- 'git checkout -b nameOfTheBranch'\n\n- git push \nremote-name\n \nbranch-name\n\n\n\n\nDelete file from repo\n\n\nMove to your command line window and type:\n\n\n- 'git rm fileName'\n\n- git commit -m \"remove fileName\"", 
             "title": "Git Utils"
         }, 
         {
@@ -37,12 +37,12 @@
         }, 
         {
             "location": "/git/#install-git", 
-            "text": "If you don't have git installed you will need also to install brew package manager:  - ruby -e \"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)\"\n- brew install git", 
+            "text": "If you don't have git installed you will need also to install brew package manager:  - 'ruby -e \"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)\"'\n- 'brew install git'", 
             "title": "Install Git"
         }, 
         {
             "location": "/git/#local-global-configuration", 
-            "text": "From anyway  - git config --global user.name  NAME \n\n- git config --global user.email  EMAIL", 
+            "text": "From anyway on your command line:  - 'git config --global user.name  NAME '\n\n- 'git config --global user.email  EMAIL '", 
             "title": "Local Global Configuration"
         }, 
         {
@@ -82,82 +82,82 @@
         }, 
         {
             "location": "/mongodb/", 
-            "text": "Mongo DB Utils\n\n\nHere you can find a basic MongoDB commands line.\n\n\nRun\n\n\n\n\nopen a new command line window\n\n\ntype: mongod\n\n\n\n\nCheck if is running\n\n\n\n\nopen a new command line window\n\n\nps -ax | grep mongo\n\n\n\n\nKill\n\n\n\n\nopen a new command line window\n\n\nps -ax | grep mongo\n\n\nuse 'kill PID' code that the previous command will print\n\n\n\n\nShell\n\n\n\n\nopen a new command line window\n\n\ntype: mongo\n\n\n\n\nDB List\n\n\n\n\nmove to your command line window with the mongo shell opened\n\n\ntype: show dbs\n\n\n\n\nUse/Create DB\n\n\n\n\nmove to your command line window with the mongo shell opened\n\n\ntype: use nameOfYourDB (if the DB doesn't exist mongo will move you to a new one, but it will not be totally created until you make an insert)\n\n\n\n\nCollections List\n\n\n\n\nmove to your command line window with the mongo shell opened\n\n\ntype: show collections\n\n\n\n\nCreate a new document/collection ('tables')\n\n\n\n\nmove to your command line window with the mongo shell opened\n\n\ntype: db.nameOfTheDocument.insert({\"key1\":\"value1\", \"key2\": \"value2\"})\n\n\n\n\nQuery all document entries\n\n\n\n\nmove to your command line window with the mongo shell opened\n\n\ntype: db.nameOfTheDocument.find().pretty()\n\n\n\n\nFiltered query\n\n\n\n\nmove to your command line window with the mongo shell opened\n\n\ntype: db.nameOfTheDocument.find({ \"key1\": \"value1\"})\n\n\n\n\nUpdate document\n\n\n\n\nmove to your command line window with the mongo shell opened\n\n\ntype: db.nameOfTheDocument.update({\"key1\": \"value1\"}, { $set: {\"key2\": \"value2\"}})\n\n\n\n\nDeleting a document\n\n\n\n\nmove to your command line window with the mongo shell opened\n\n\ntype: db.nameOfTheDocument.drop()\n\n\n\n\nDeleting multiple documents entries\n\n\n\n\nmove to your command line window with the mongo shell opened\n\n\ntype: db.nameOfTheDocument.remove({ \"key1\": \"value1\" })\n\n\n\n\nDeleting DB\n\n\n\n\nmove to your command line window with the mongo shell opened\n\n\nmake sure you are using the DB that you want to delete typing: use nameOfYourDB\n\n\ntype: db.dropDatabase()", 
+            "text": "Mongo DB Utils\n\n\nHere you can find a basic MongoDB commands line\n\n\n\n\nIf you don't have git installed you will need also to install brew package manager:\n\n\n- 'ruby -e \"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)\"'\n- 'brew install mongodb'\n\n\n\nRun\n\n\nIf you don't have git installed you will need also to install brew package manager:\n\n\n- 'mongod'\n\n\n\nCheck if is Running\n\n\nTo check if you have any mongo instance running:\n\n\n- 'ps -ax | grep mongo'\n\n\n\nKill Mongo Instance\n\n\nMove to your command line window and type:\n\n\n- use 'kill PID' code that the previous Check if is Running command provide\n\n\n\nShell\n\n\nMove to your command line window and type:\n\n\n- 'mongo'\n\n\n\nDB List\n\n\nFrom the mongo opened shell:\n\n\n- 'show dbs'\n\n\n\nUse/Create DB\n\n\nFrom the mongo opened shell:\n\n\n- 'use nameOfYourDB' (if the DB doesn't exist mongo will move you to a new one, but it will not be totally created until you make an insert)\n\n\n\nCollections List\n\n\nFrom the mongo opened shell:\n\n\n- 'show collections'\n\n\n\nCreate a new Document / Collection ('tables')\n\n\nFrom the mongo opened shell:\n\n\n- 'db.nameOfTheDocument.insert({\"key1\":\"value1\", \"key2\": \"value2\"})'\n\n\n\nQuery all Document Entries\n\n\nFrom the mongo opened shell:\n\n\n- 'db.nameOfTheDocument.find().pretty()'\n\n\n\nFiltered Query\n\n\nFrom the mongo opened shell:\n\n\n- 'db.nameOfTheDocument.find({ \"key1\": \"value1\"})'\n\n\n\nUpdate Document\n\n\nFrom the mongo opened shell:\n\n\n- 'db.nameOfTheDocument.update({\"key1\": \"value1\"}, { $set: {\"key2\": \"value2\"}})'\n\n\n\nDeleting a Document\n\n\nFrom the mongo opened shell:\n\n\n- 'db.nameOfTheDocument.drop()'\n\n\n\nDeleting Multiple Documents Entries\n\n\nFrom the mongo opened shell:\n\n\n- 'db.nameOfTheDocument.remove({ \"key1\": \"value1\" })'\n\n\n\nDeleting DB\n\n\nFrom the mongo opened shell and make sure you are using the DB that you want to delete typing 'use nameOfYourDB':\n\n\n\n\n'db.dropDatabase()'", 
             "title": "Mongo DB Utils"
         }, 
         {
             "location": "/mongodb/#mongo-db-utils", 
-            "text": "Here you can find a basic MongoDB commands line.", 
+            "text": "Here you can find a basic MongoDB commands line", 
             "title": "Mongo DB Utils"
         }, 
         {
             "location": "/mongodb/#run", 
-            "text": "open a new command line window  type: mongod", 
+            "text": "If you don't have git installed you will need also to install brew package manager:  - 'mongod'", 
             "title": "Run"
         }, 
         {
             "location": "/mongodb/#check-if-is-running", 
-            "text": "open a new command line window  ps -ax | grep mongo", 
-            "title": "Check if is running"
+            "text": "To check if you have any mongo instance running:  - 'ps -ax | grep mongo'", 
+            "title": "Check if is Running"
         }, 
         {
-            "location": "/mongodb/#kill", 
-            "text": "open a new command line window  ps -ax | grep mongo  use 'kill PID' code that the previous command will print", 
-            "title": "Kill"
+            "location": "/mongodb/#kill-mongo-instance", 
+            "text": "Move to your command line window and type:  - use 'kill PID' code that the previous Check if is Running command provide", 
+            "title": "Kill Mongo Instance"
         }, 
         {
             "location": "/mongodb/#shell", 
-            "text": "open a new command line window  type: mongo", 
+            "text": "Move to your command line window and type:  - 'mongo'", 
             "title": "Shell"
         }, 
         {
             "location": "/mongodb/#db-list", 
-            "text": "move to your command line window with the mongo shell opened  type: show dbs", 
+            "text": "From the mongo opened shell:  - 'show dbs'", 
             "title": "DB List"
         }, 
         {
             "location": "/mongodb/#usecreate-db", 
-            "text": "move to your command line window with the mongo shell opened  type: use nameOfYourDB (if the DB doesn't exist mongo will move you to a new one, but it will not be totally created until you make an insert)", 
+            "text": "From the mongo opened shell:  - 'use nameOfYourDB' (if the DB doesn't exist mongo will move you to a new one, but it will not be totally created until you make an insert)", 
             "title": "Use/Create DB"
         }, 
         {
             "location": "/mongodb/#collections-list", 
-            "text": "move to your command line window with the mongo shell opened  type: show collections", 
+            "text": "From the mongo opened shell:  - 'show collections'", 
             "title": "Collections List"
         }, 
         {
-            "location": "/mongodb/#create-a-new-documentcollection-tables", 
-            "text": "move to your command line window with the mongo shell opened  type: db.nameOfTheDocument.insert({\"key1\":\"value1\", \"key2\": \"value2\"})", 
-            "title": "Create a new document/collection ('tables')"
+            "location": "/mongodb/#create-a-new-document-collection-tables", 
+            "text": "From the mongo opened shell:  - 'db.nameOfTheDocument.insert({\"key1\":\"value1\", \"key2\": \"value2\"})'", 
+            "title": "Create a new Document / Collection ('tables')"
         }, 
         {
             "location": "/mongodb/#query-all-document-entries", 
-            "text": "move to your command line window with the mongo shell opened  type: db.nameOfTheDocument.find().pretty()", 
-            "title": "Query all document entries"
+            "text": "From the mongo opened shell:  - 'db.nameOfTheDocument.find().pretty()'", 
+            "title": "Query all Document Entries"
         }, 
         {
             "location": "/mongodb/#filtered-query", 
-            "text": "move to your command line window with the mongo shell opened  type: db.nameOfTheDocument.find({ \"key1\": \"value1\"})", 
-            "title": "Filtered query"
+            "text": "From the mongo opened shell:  - 'db.nameOfTheDocument.find({ \"key1\": \"value1\"})'", 
+            "title": "Filtered Query"
         }, 
         {
             "location": "/mongodb/#update-document", 
-            "text": "move to your command line window with the mongo shell opened  type: db.nameOfTheDocument.update({\"key1\": \"value1\"}, { $set: {\"key2\": \"value2\"}})", 
-            "title": "Update document"
+            "text": "From the mongo opened shell:  - 'db.nameOfTheDocument.update({\"key1\": \"value1\"}, { $set: {\"key2\": \"value2\"}})'", 
+            "title": "Update Document"
         }, 
         {
             "location": "/mongodb/#deleting-a-document", 
-            "text": "move to your command line window with the mongo shell opened  type: db.nameOfTheDocument.drop()", 
-            "title": "Deleting a document"
+            "text": "From the mongo opened shell:  - 'db.nameOfTheDocument.drop()'", 
+            "title": "Deleting a Document"
         }, 
         {
             "location": "/mongodb/#deleting-multiple-documents-entries", 
-            "text": "move to your command line window with the mongo shell opened  type: db.nameOfTheDocument.remove({ \"key1\": \"value1\" })", 
-            "title": "Deleting multiple documents entries"
+            "text": "From the mongo opened shell:  - 'db.nameOfTheDocument.remove({ \"key1\": \"value1\" })'", 
+            "title": "Deleting Multiple Documents Entries"
         }, 
         {
             "location": "/mongodb/#deleting-db", 
-            "text": "move to your command line window with the mongo shell opened  make sure you are using the DB that you want to delete typing: use nameOfYourDB  type: db.dropDatabase()", 
+            "text": "From the mongo opened shell and make sure you are using the DB that you want to delete typing 'use nameOfYourDB':   'db.dropDatabase()'", 
             "title": "Deleting DB"
         }, 
         {

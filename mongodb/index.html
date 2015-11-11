@@ -101,9 +101,9 @@
         
             <li><a href="#run">Run</a></li>
         
-            <li><a href="#check-if-is-running">Check if is running</a></li>
+            <li><a href="#check-if-is-running">Check if is Running</a></li>
         
-            <li><a href="#kill">Kill</a></li>
+            <li><a href="#kill-mongo-instance">Kill Mongo Instance</a></li>
         
             <li><a href="#shell">Shell</a></li>
         
@@ -113,17 +113,17 @@
         
             <li><a href="#collections-list">Collections List</a></li>
         
-            <li><a href="#create-a-new-documentcollection-tables">Create a new document/collection ('tables')</a></li>
+            <li><a href="#create-a-new-document-collection-tables">Create a new Document / Collection ('tables')</a></li>
         
-            <li><a href="#query-all-document-entries">Query all document entries</a></li>
+            <li><a href="#query-all-document-entries">Query all Document Entries</a></li>
         
-            <li><a href="#filtered-query">Filtered query</a></li>
+            <li><a href="#filtered-query">Filtered Query</a></li>
         
-            <li><a href="#update-document">Update document</a></li>
+            <li><a href="#update-document">Update Document</a></li>
         
-            <li><a href="#deleting-a-document">Deleting a document</a></li>
+            <li><a href="#deleting-a-document">Deleting a Document</a></li>
         
-            <li><a href="#deleting-multiple-documents-entries">Deleting multiple documents entries</a></li>
+            <li><a href="#deleting-multiple-documents-entries">Deleting Multiple Documents Entries</a></li>
         
             <li><a href="#deleting-db">Deleting DB</a></li>
         
@@ -133,78 +133,68 @@
             <div class="col-md-9" role="main">
 
 <h1 id="mongo-db-utils">Mongo DB Utils</h1>
-<p>Here you can find a basic MongoDB commands line.</p>
+<p>Here you can find a basic MongoDB commands line</p>
+<h2 id="_1"></h2>
+<p>If you don't have git installed you will need also to install brew package manager:</p>
+<pre><code>- 'ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"'
+- 'brew install mongodb'
+</code></pre>
 <h2 id="run">Run</h2>
-<ul>
-<li>open a new command line window</li>
-<li>type: mongod</li>
-</ul>
-<h2 id="check-if-is-running">Check if is running</h2>
-<ul>
-<li>open a new command line window</li>
-<li>ps -ax | grep mongo</li>
-</ul>
-<h2 id="kill">Kill</h2>
-<ul>
-<li>open a new command line window</li>
-<li>ps -ax | grep mongo</li>
-<li>use 'kill PID' code that the previous command will print</li>
-</ul>
+<p>If you don't have git installed you will need also to install brew package manager:</p>
+<pre><code>- 'mongod'
+</code></pre>
+<h2 id="check-if-is-running">Check if is Running</h2>
+<p>To check if you have any mongo instance running:</p>
+<pre><code>- 'ps -ax | grep mongo'
+</code></pre>
+<h2 id="kill-mongo-instance">Kill Mongo Instance</h2>
+<p>Move to your command line window and type:</p>
+<pre><code>- use 'kill PID' code that the previous Check if is Running command provide
+</code></pre>
 <h2 id="shell">Shell</h2>
-<ul>
-<li>open a new command line window</li>
-<li>type: mongo</li>
-</ul>
+<p>Move to your command line window and type:</p>
+<pre><code>- 'mongo'
+</code></pre>
 <h2 id="db-list">DB List</h2>
-<ul>
-<li>move to your command line window with the mongo shell opened</li>
-<li>type: show dbs</li>
-</ul>
+<p>From the mongo opened shell:</p>
+<pre><code>- 'show dbs'
+</code></pre>
 <h2 id="usecreate-db">Use/Create DB</h2>
-<ul>
-<li>move to your command line window with the mongo shell opened</li>
-<li>type: use nameOfYourDB (if the DB doesn't exist mongo will move you to a new one, but it will not be totally created until you make an insert)</li>
-</ul>
+<p>From the mongo opened shell:</p>
+<pre><code>- 'use nameOfYourDB' (if the DB doesn't exist mongo will move you to a new one, but it will not be totally created until you make an insert)
+</code></pre>
 <h2 id="collections-list">Collections List</h2>
-<ul>
-<li>move to your command line window with the mongo shell opened</li>
-<li>type: show collections</li>
-</ul>
-<h2 id="create-a-new-documentcollection-tables">Create a new document/collection ('tables')</h2>
-<ul>
-<li>move to your command line window with the mongo shell opened</li>
-<li>type: db.nameOfTheDocument.insert({"key1":"value1", "key2": "value2"})</li>
-</ul>
-<h2 id="query-all-document-entries">Query all document entries</h2>
-<ul>
-<li>move to your command line window with the mongo shell opened</li>
-<li>type: db.nameOfTheDocument.find().pretty()</li>
-</ul>
-<h2 id="filtered-query">Filtered query</h2>
-<ul>
-<li>move to your command line window with the mongo shell opened</li>
-<li>type: db.nameOfTheDocument.find({ "key1": "value1"})</li>
-</ul>
-<h2 id="update-document">Update document</h2>
-<ul>
-<li>move to your command line window with the mongo shell opened</li>
-<li>type: db.nameOfTheDocument.update({"key1": "value1"}, { $set: {"key2": "value2"}})</li>
-</ul>
-<h2 id="deleting-a-document">Deleting a document</h2>
-<ul>
-<li>move to your command line window with the mongo shell opened</li>
-<li>type: db.nameOfTheDocument.drop()</li>
-</ul>
-<h2 id="deleting-multiple-documents-entries">Deleting multiple documents entries</h2>
-<ul>
-<li>move to your command line window with the mongo shell opened</li>
-<li>type: db.nameOfTheDocument.remove({ "key1": "value1" })</li>
-</ul>
+<p>From the mongo opened shell:</p>
+<pre><code>- 'show collections'
+</code></pre>
+<h2 id="create-a-new-document-collection-tables">Create a new Document / Collection ('tables')</h2>
+<p>From the mongo opened shell:</p>
+<pre><code>- 'db.nameOfTheDocument.insert({"key1":"value1", "key2": "value2"})'
+</code></pre>
+<h2 id="query-all-document-entries">Query all Document Entries</h2>
+<p>From the mongo opened shell:</p>
+<pre><code>- 'db.nameOfTheDocument.find().pretty()'
+</code></pre>
+<h2 id="filtered-query">Filtered Query</h2>
+<p>From the mongo opened shell:</p>
+<pre><code>- 'db.nameOfTheDocument.find({ "key1": "value1"})'
+</code></pre>
+<h2 id="update-document">Update Document</h2>
+<p>From the mongo opened shell:</p>
+<pre><code>- 'db.nameOfTheDocument.update({"key1": "value1"}, { $set: {"key2": "value2"}})'
+</code></pre>
+<h2 id="deleting-a-document">Deleting a Document</h2>
+<p>From the mongo opened shell:</p>
+<pre><code>- 'db.nameOfTheDocument.drop()'
+</code></pre>
+<h2 id="deleting-multiple-documents-entries">Deleting Multiple Documents Entries</h2>
+<p>From the mongo opened shell:</p>
+<pre><code>- 'db.nameOfTheDocument.remove({ "key1": "value1" })'
+</code></pre>
 <h2 id="deleting-db">Deleting DB</h2>
+<p>From the mongo opened shell and make sure you are using the DB that you want to delete typing 'use nameOfYourDB':</p>
 <ul>
-<li>move to your command line window with the mongo shell opened</li>
-<li>make sure you are using the DB that you want to delete typing: use nameOfYourDB</li>
-<li>type: db.dropDatabase()</li>
+<li>'db.dropDatabase()'</li>
 </ul></div>
         </div>
 
