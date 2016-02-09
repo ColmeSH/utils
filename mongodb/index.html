@@ -133,6 +133,8 @@
         
             <li><a href="#deleting-db">Deleting DB</a></li>
         
+            <li><a href="#deleting-single-entry">Deleting single entry</a></li>
+        
     
     </ul>
 </div></div>
@@ -200,6 +202,10 @@
 <h2 id="deleting-db">Deleting DB</h2>
 <p>From the mongo opened shell and make sure you are using the DB that you want to delete typing 'use nameOfYourDB':</p>
 <pre><code>- 'db.dropDatabase()'
+</code></pre>
+<h2 id="deleting-single-entry">Deleting single entry</h2>
+<p>You can delete single entries just specifying '_id' value</p>
+<pre><code>- 'db.collection.remove( {"_id": ObjectId("xxxx")} )'
 </code></pre></div>
         </div>
 
