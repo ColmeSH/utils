@@ -92,3 +92,9 @@ From the mongo opened shell:
 From the mongo opened shell and make sure you are using the DB that you want to delete typing 'use nameOfYourDB':
 
     - 'db.dropDatabase()'
+
+## Deleting single entry
+
+You can delete single entries just specifying '_id' value
+
+    - 'db.collection.remove( {"_id": ObjectId("xxxx")} )'
