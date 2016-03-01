@@ -96,8 +96,7 @@ in the html
 
 ##Master and sections
 
-Create an app.blade.php file which will contain the basic html
-In master:
+Create an app.blade.php file which will contain the basic html, inn master:
     -   '<body>
             <div class="container">
                 @yield('content')
