@@ -1,6 +1,6 @@
 # Utils
 
-## Requirements 
+## Requirements
 - mkdocs installed (http://www.mkdocs.org/)
 
 ## Walkthrough
@@ -8,4 +8,7 @@
 - make changes
 - commit and push changes on master
 - run udpdate sh: sh update.sh
-- explore changes @ andreafspeziale.github.io/utils 
+- explore changes @ andreafspeziale.github.io/utils
+
+## Local visualization
+- run from the root folder: $mkdocs serve

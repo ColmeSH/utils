@@ -106,40 +106,40 @@ Create an app.blade.php file which will contain the basic html, in master:
     </body>
 
 In a random contact page:
-    ```
-        @extends('app')
-        @section('content')
-            <h1>Contact Me!</h1>
-            <p>Lorem ipsum</p>
-        @stop
-        @section('footer')
-            <script>some script</script> <!-- You will be able to avoid it in other pages -->
-        @stop
-    ```
+
+    @extends('app')
+    @section('content')
+        <h1>Contact Me!</h1>
+        <p>Lorem ipsum</p>
+    @stop
+    @section('footer')
+        <script>some script</script> <!-- You will be able to avoid it in other pages -->
+    @stop
 
 ##Fast IF statement in blade
 
 Instead of opening php tags
 
-    -   @if($firstName == "Andrea")
-            <h1>About me: {{ $firstName }} {{ $lastName }}</h1>
-            <p>Lorem ipsum</p>
-        @else
-            <p>Error</p>
-        @endif
+    @if($firstName == "Andrea")
+        <h1>About me: {{ $firstName }} {{ $lastName }}</h1>
+        <p>Lorem ipsum</p>
+    @else
+        <p>Error</p>
+    @endif
 
 We have also
 
     - @unless()
-    -   The controller returning something like: $people = ['Alex', 'Gabri', 'Andre'];
-        @if(count($people))
-            <h3>People I like:</h3>
-            <ul>
-                @foreach($people as $person)
-                    <li>{{ $person }}</li>
-                @endforeach
-            </ul>
-        @endif
+    - The controller returning something like: $people = ['Alex', 'Gabri', 'Andre'];
+
+    @if(count($people))
+        <h3>People I like:</h3>
+        <ul>
+            @foreach($people as $person)
+                <li>{{ $person }}</li>
+            @endforeach
+        </ul>
+    @endif
 
 ##More about configuration
 
