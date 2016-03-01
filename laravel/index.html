@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+
+	<title>Laravel Utils - UD</title>
+
+        <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../css/font-awesome-4.0.3.css" rel="stylesheet">
+        <link rel="stylesheet" href="../css/highlight.css">
+        <link href="../css/base.css" rel="stylesheet">
+
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+        
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+            <!-- Main title -->
+            <a class="navbar-brand" href="..">UD</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+            <!-- Main navigation -->
+            <ul class="nav navbar-nav">
+            
+            
+                <li >
+                    <a href="..">Welcome</a>
+                </li>
+            
+            
+            
+                <li >
+                    <a href="../git/">Git Utils</a>
+                </li>
+            
+            
+            
+                <li >
+                    <a href="../grunt/">Grunt Utils</a>
+                </li>
+            
+            
+            
+                <li >
+                    <a href="../mongodb/">Mongo DB Utils</a>
+                </li>
+            
+            
+            
+                <li >
+                    <a href="../python/">Python Utils</a>
+                </li>
+            
+            
+            
+                <li class="active">
+                    <a href="./">Laravel Utils</a>
+                </li>
+            
+            
+            </ul>
+
+            <!-- Search, Navigation and Repo links -->
+            <ul class="nav navbar-nav navbar-right">
+                <li >
+                    <a rel="next" href="../python/">
+                        <i class="fa fa-arrow-left"></i> Previous
+                    </a>
+                </li>
+                <li class="disabled">
+                    <a rel="prev" >
+                        Next <i class="fa fa-arrow-right"></i>
+                    </a>
+                </li>
+                
+            </ul>
+        </div>
+    </div>
+</div>
+
+        <div class="container">
+            <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+    
+        <li class="main active"><a href="#laravel-utils">Laravel Utils</a></li>
+        
+            <li><a href="#composer">Composer</a></li>
+        
+            <li><a href="#homestead">Homestead</a></li>
+        
+            <li><a href="#structure">Structure</a></li>
+        
+            <li><a href="#environment">Environment</a></li>
+        
+            <li><a href="#creating-new-controller">Creating New Controller</a></li>
+        
+            <li><a href="#passing-data-to-view">Passing data to view</a></li>
+        
+            <li><a href="#master-and-sections">Master and sections</a></li>
+        
+            <li><a href="#fast-if-statement-in-blade">Fast IF statement in Blade</a></li>
+        
+            <li><a href="#more-about-configuration">More about Configuration</a></li>
+        
+            <li><a href="#migration">Migration</a></li>
+        
+            <li><a href="#eloquent-orm">Eloquent [ORM]</a></li>
+        
+    
+    </ul>
+</div></div>
+            <div class="col-md-9" role="main">
+
+<h1 id="laravel-utils">Laravel Utils</h1>
+<h2 id="composer">Composer</h2>
+<p>Php dependencies manager.
+Install with</p>
+<pre><code>- curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer
+</code></pre>
+<p>Add something to your composer json</p>
+<pre><code>- composer require phpspec/phpspec (vendor/pck)
+</code></pre>
+<p>More packages at</p>
+<pre><code>- https://packagist.org/
+</code></pre>
+<p>Create a new virgin laravel project with</p>
+<pre><code>- composer create-project laravel/laravel NAME
+</code></pre>
+<h2 id="homestead">Homestead</h2>
+<p>Laravel ready environment.
+You will need installed</p>
+<pre><code>- virtualbox
+- vagrant
+</code></pre>
+<p>Add the homestead vagrant box with</p>
+<pre><code>- vagrant box add laravel/homestead
+</code></pre>
+<p>Install homestead with composer</p>
+<pre><code>- composer global require "laravel/homestead=~2.0"
+</code></pre>
+<p>Be sure to add the PATH to your bash or zsh profile in order to use homestead</p>
+<pre><code>- export PATH:~/.composer/vendor/bin:$PATH
+</code></pre>
+<p>Try to run homestead and you will see all the commands available</p>
+<pre><code>- homestead
+</code></pre>
+<p>Check .homestead folder ~ or the configuration with</p>
+<pre><code>- homestead edit
+</code></pre>
+<p>[PROBLEMS] - 500 server error, nginx has permission problems</p>
+<p>Laracasts is using homestead like this</p>
+<pre><code>- serve domain path
+</code></pre>
+<p>but its searching for a file called serve.sh and I have serve-laravel and I can't cp it</p>
+<h2 id="structure">Structure</h2>
+<p>app HTTP --&gt; routes.php --&gt; route file</p>
+<pre><code>- Route::get('about', 'PagesController@about');
+</code></pre>
+<p>This will search a PagesController with a method "about"</p>
+<h2 id="environment">Environment</h2>
+<p>Everything is inside .env file</p>
+<h2 id="creating-new-controller">Creating New Controller</h2>
+<p>You can do this with laravel cli called Artisan</p>
+<pre><code>- php artisan make:controller PagesController --plain (--plain doesn't exist anymore)
+</code></pre>
+<p>for help</p>
+<pre><code>- php artisan help make:controller
+</code></pre>
+<h2 id="passing-data-to-view">Passing data to view</h2>
+<p>First way</p>
+<pre><code>- return view('pages.about')-&gt;with('name', $name);
+- return view('pages.about')-&gt;with([
+        'firstName' =&gt; 'Andrea',
+        'lastName' =&gt; 'Speziale'
+    ]);
+- return view('pages.about', $data);
+- return view('pages.about', compact('firstName', 'lastName'));
+</code></pre>
+<p>in the html</p>
+<pre><code>- {!! $name !!} with escaping
+- {{ $name }}
+</code></pre>
+<h2 id="master-and-sections">Master and sections</h2>
+<p>Create an app.blade.php file which will contain the basic html
+In master:
+    -   <body>
+            <div class="container">
+                @yield('content')
+            </div>
+            @yield('footer') <!-- You will be able to add this only in specific files -->
+        </body></p>
+<p>In a random contact page:
+    -   @extends('app')
+        @section('content')
+            <h1>Contact Me!</h1>
+            <p>Lorem ipsum</p>
+        @stop
+        @section('footer')
+            <script>some script</script> <!-- You will be able to avoid it in other pages -->
+        @stop</p>
+<h2 id="fast-if-statement-in-blade">Fast IF statement in Blade</h2>
+<p>Instead of opening php tags</p>
+<pre><code>-   @if($firstName == "Andrea")
+        &lt;h1&gt;About me: {{ $firstName }} {{ $lastName }}&lt;/h1&gt;
+        &lt;p&gt;Lorem ipsum&lt;/p&gt;
+    @else
+        &lt;p&gt;Error&lt;/p&gt;
+    @endif
+</code></pre>
+<p>We have also</p>
+<pre><code>- @unless()
+-   The controller returning something like: $people = ['Alex', 'Gabri', 'Andre'];
+    @if(count($people))
+        &lt;h3&gt;People I like:&lt;/h3&gt;
+        &lt;ul&gt;
+            @foreach($people as $person)
+                &lt;li&gt;{{ $person }}&lt;/li&gt;
+            @endforeach
+        &lt;/ul&gt;
+    @endif
+</code></pre>
+<h2 id="more-about-configuration">More about Configuration</h2>
+<pre><code>- config folder--&gt;database.php
+</code></pre>
+<p>For example u will find mysql ready to get the configuration from the .env file.
+This file is also ignored by the .gitignore file, so you can have separate config for local and production environment</p>
+<pre><code>- 'host' =&gt; env('DB_HOST', 'localhost')
+</code></pre>
+<p>This will be searching for a DB_HOST variable in the env file and if it will be not found, will take the localhost as default</p>
+<pre><code>- Default connection to mysql from database.php 'default' =&gt; env('DB_CONNECTION', 'mysql')
+</code></pre>
+<h2 id="migration">Migration</h2>
+<p>Version control for DBs.
+Tables as php classes.</p>
+<p>Create the class and then create the table.</p>
+<p>[I had to install manually sqlite - sudo apt-get install php5-sqlite]</p>
+<pre><code>- php artisan migrate
+- php artisan migrate:reset [roolback all migration]
+- php artisan migrate:rollback [roolback last migration]
+</code></pre>
+<p>Example --&gt; create a table for Articles</p>
+<pre><code>-  php artisan make:migration create_articles_table --create="articles"
+</code></pre>
+<p>If for example you want to add a new column for Articles</p>
+<pre><code>- php artisan make:migration add_excerpt_to_articles_table --table="articles"
+</code></pre>
+<p>It will create a new file which "extends" articles and you will write in the up function the new column</p>
+<pre><code>- $table-&gt;text("excerpt")-&gt;nullable(); //if you agree that your article excerpt could be empty
+</code></pre>
+<p>and you will write in the down function</p>
+<pre><code>- $table-&gt;dropColumn("excerpt");
+</code></pre>
+<p>try to migrate it and rollback it too!</p>
+<pre><code>- php artisan migrate
+- php artisan:rollback --&gt; ERROR --&gt; you will need composer require doctrine/dbal
+</code></pre>
+<h2 id="eloquent-orm">Eloquent [ORM]</h2>
+<p>Record implementation</p>
+<pre><code>- php artisan create:model Article
+</code></pre>
+<p>Useful laravel cli for testing
+    - php artisan tinker
+        - $article = new App\Article
+        - $article-&gt;title='my first article'
+        - $article-&gt;body='lorem ipsum'
+        - $article-&gt;published_at=Carbon\Carbon::now();
+        - $article or $article-&gt;toArray();</p>
+<p>Now make it persistent</p>
+<pre><code>    - $article-&gt;save();
+</code></pre>
+<p>Fetching it</p>
+<pre><code>    - App\Article::all()-&gt;toArray();
+</code></pre>
+<p>Updating</p>
+<pre><code>    - $article-&gt;title = 'My Updated First Article';
+    - $article-&gt;save();
+    - App\Article::all()-&gt;toArray();
+</code></pre>
+<p>How we could do it: select * from table where id = 1;</p>
+<pre><code>    - $article = App\Article::find(1);
+    - $article or $article-&gt;toArray();
+</code></pre>
+<p>How we could do it: select * from articles where body = 'lorem ipsum';</p>
+<pre><code>    - $article = App\Article::where('body', 'lorem ipsum')-&gt;get();
+    - $article = App\Article::where('body', 'lorem ipsum')-&gt;first(); to get the very first
+</code></pre>
+<p>Fill the object in one time</p>
+<pre><code>    - $article = App\Article::create(['title'=&gt;'Very new article', 'body'=&gt;'New body', 'published_at'=&gt;Carbon\Carbon::now()]);
+
+you will get a MassAssignmentException, so you will go to Article.php model and update it with
+
+    -   protected $fillable=[
+            'title',
+            'body',
+            'published_at'
+        ];
+
+exit from the tinker, re-open it and retry
+
+    - $article = App\Article::create(['title'=&gt;'Very new article', 'body'=&gt;'New body', 'published_at'=&gt;Carbon\Carbon::now()]);
+</code></pre>
+<p>A fast way to update</p>
+<pre><code>    - $article = App\Article::find(2);
+    - $article-&gt;update(['body' =&gt; 'Updated!!']); //filling and saving it
+</code></pre></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            
+            <center>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</center>
+        </footer>
+
+        <script src="../js/jquery-1.10.2.min.js"></script>
+        <script src="../js/bootstrap-3.0.3.min.js"></script>
+        <script src="../js/highlight.pack.js"></script>
+        <script src="../js/base.js"></script>
+    </body>
+</html>
