@@ -119,7 +119,7 @@
         
             <li><a href="#environment">Environment</a></li>
         
-            <li><a href="#creating-new-controller">Creating New Controller</a></li>
+            <li><a href="#creating-new-controller">Creating new controller</a></li>
         
             <li><a href="#passing-data-to-view">Passing data to view</a></li>
         
@@ -186,7 +186,7 @@ You will need installed</p>
 <p>This will search a PagesController with a method "about"</p>
 <h2 id="environment">Environment</h2>
 <p>Everything is inside .env file</p>
-<h2 id="creating-new-controller">Creating New Controller</h2>
+<h2 id="creating-new-controller">Creating new controller</h2>
 <p>You can do this with laravel cli called Artisan</p>
 <pre><code>- php artisan make:controller PagesController --plain (--plain doesn't exist anymore)
 </code></pre>
@@ -210,12 +210,12 @@ You will need installed</p>
 <h2 id="master-and-sections">Master and sections</h2>
 <p>Create an app.blade.php file which will contain the basic html
 In master:
-    -   <body>
+    -   '<body>
             <div class="container">
                 @yield('content')
             </div>
             @yield('footer') <!-- You will be able to add this only in specific files -->
-        </body></p>
+        </body>'</p>
 <p>In a random contact page:
     -   @extends('app')
         @section('content')
