@@ -97,14 +97,13 @@ in the html
 ##Master and sections
 
 Create an app.blade.php file which will contain the basic html, in master:
-    ```
-        <body>
-            <div class="container">
-                @yield('content')
-            </div>
-            @yield('footer') <!-- You will be able to add this only in specific files -->
-        </body>
-    ```
+
+    <body>
+        <div class="container">
+            @yield('content')
+        </div>
+        @yield('footer') <!-- You will be able to add this only in specific files -->
+    </body>
 
 In a random contact page:
     ```
