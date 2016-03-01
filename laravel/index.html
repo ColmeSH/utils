@@ -125,9 +125,9 @@
         
             <li><a href="#master-and-sections">Master and sections</a></li>
         
-            <li><a href="#fast-if-statement-in-blade">Fast IF statement in Blade</a></li>
+            <li><a href="#fast-if-statement-in-blade">Fast IF statement in blade</a></li>
         
-            <li><a href="#more-about-configuration">More about Configuration</a></li>
+            <li><a href="#more-about-configuration">More about configuration</a></li>
         
             <li><a href="#migration">Migration</a></li>
         
@@ -208,34 +208,39 @@ You will need installed</p>
 - {{ $name }}
 </code></pre>
 <h2 id="master-and-sections">Master and sections</h2>
-<p>Create an app.blade.php file which will contain the basic html, inn master:
-    -   '<body>
-            <div class="container">
+<p>Create an app.blade.php file which will contain the basic html, in master:
+    -   <code>html
+        &lt;body&gt;
+            &lt;div class="container"&gt;
                 @yield('content')
-            </div>
-            @yield('footer') <!-- You will be able to add this only in specific files -->
-        </body>'</p>
+            &lt;/div&gt;
+            @yield('footer') &lt;!-- You will be able to add this only in specific files --&gt;
+        &lt;/body&gt;</code></p>
 <p>In a random contact page:
-    -   @extends('app')
+    -   <code>html
+        @extends('app')
         @section('content')
-            <h1>Contact Me!</h1>
-            <p>Lorem ipsum</p>
+            &lt;h1&gt;Contact Me!&lt;/h1&gt;
+            &lt;p&gt;Lorem ipsum&lt;/p&gt;
         @stop
         @section('footer')
-            <script>some script</script> <!-- You will be able to avoid it in other pages -->
-        @stop</p>
-<h2 id="fast-if-statement-in-blade">Fast IF statement in Blade</h2>
+            &lt;script&gt;some script&lt;/script&gt; &lt;!-- You will be able to avoid it in other pages --&gt;
+        @stop</code></p>
+<h2 id="fast-if-statement-in-blade">Fast IF statement in blade</h2>
 <p>Instead of opening php tags</p>
-<pre><code>-   @if($firstName == "Andrea")
+<pre><code>-   ```html
+    @if($firstName == "Andrea")
         &lt;h1&gt;About me: {{ $firstName }} {{ $lastName }}&lt;/h1&gt;
         &lt;p&gt;Lorem ipsum&lt;/p&gt;
     @else
         &lt;p&gt;Error&lt;/p&gt;
     @endif
+    ```
 </code></pre>
 <p>We have also</p>
 <pre><code>- @unless()
 -   The controller returning something like: $people = ['Alex', 'Gabri', 'Andre'];
+    ```html
     @if(count($people))
         &lt;h3&gt;People I like:&lt;/h3&gt;
         &lt;ul&gt;
@@ -244,8 +249,9 @@ You will need installed</p>
             @endforeach
         &lt;/ul&gt;
     @endif
+    ```
 </code></pre>
-<h2 id="more-about-configuration">More about Configuration</h2>
+<h2 id="more-about-configuration">More about configuration</h2>
 <pre><code>- config folder--&gt;database.php
 </code></pre>
 <p>For example u will find mysql ready to get the configuration from the .env file.
