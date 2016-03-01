@@ -209,16 +209,14 @@ You will need installed</p>
 </code></pre>
 <h2 id="master-and-sections">Master and sections</h2>
 <p>Create an app.blade.php file which will contain the basic html, in master:
-    <code>html
-        &lt;body&gt;
+    <code>&lt;body&gt;
             &lt;div class="container"&gt;
                 @yield('content')
             &lt;/div&gt;
             @yield('footer') &lt;!-- You will be able to add this only in specific files --&gt;
         &lt;/body&gt;</code></p>
 <p>In a random contact page:
-    -   <code>html
-        @extends('app')
+    <code>@extends('app')
         @section('content')
             &lt;h1&gt;Contact Me!&lt;/h1&gt;
             &lt;p&gt;Lorem ipsum&lt;/p&gt;
@@ -238,7 +236,6 @@ You will need installed</p>
 <p>We have also</p>
 <pre><code>- @unless()
 -   The controller returning something like: $people = ['Alex', 'Gabri', 'Andre'];
-    ```html
     @if(count($people))
         &lt;h3&gt;People I like:&lt;/h3&gt;
         &lt;ul&gt;
@@ -247,7 +244,6 @@ You will need installed</p>
             @endforeach
         &lt;/ul&gt;
     @endif
-    ```
 </code></pre>
 <h2 id="more-about-configuration">More about configuration</h2>
 <pre><code>- config folder--&gt;database.php
