@@ -96,16 +96,19 @@ in the html
 
 ##Master and sections
 
-Create an app.blade.php file which will contain the basic html, inn master:
-    -   '<body>
+Create an app.blade.php file which will contain the basic html, in master:
+    -   ```html
+        <body>
             <div class="container">
                 @yield('content')
             </div>
             @yield('footer') <!-- You will be able to add this only in specific files -->
-        </body>'
+        </body>
+        ```
 
 In a random contact page:
-    -   @extends('app')
+    -   ```html
+        @extends('app')
         @section('content')
             <h1>Contact Me!</h1>
             <p>Lorem ipsum</p>
@@ -113,22 +116,26 @@ In a random contact page:
         @section('footer')
             <script>some script</script> <!-- You will be able to avoid it in other pages -->
         @stop
+        ```
 
-##Fast IF statement in Blade
+##Fast IF statement in blade
 
 Instead of opening php tags
 
-    -   @if($firstName == "Andrea")
+    -   ```html
+        @if($firstName == "Andrea")
             <h1>About me: {{ $firstName }} {{ $lastName }}</h1>
             <p>Lorem ipsum</p>
         @else
             <p>Error</p>
         @endif
+        ```
 
 We have also
 
     - @unless()
     -   The controller returning something like: $people = ['Alex', 'Gabri', 'Andre'];
+        ```html
         @if(count($people))
             <h3>People I like:</h3>
             <ul>
@@ -137,8 +144,9 @@ We have also
                 @endforeach
             </ul>
         @endif
+        ```
 
-##More about Configuration
+##More about configuration
 
     - config folder-->database.php
 
