@@ -228,14 +228,12 @@ You will need installed</p>
         @stop</code></p>
 <h2 id="fast-if-statement-in-blade">Fast IF statement in blade</h2>
 <p>Instead of opening php tags</p>
-<pre><code>-   ```html
-    @if($firstName == "Andrea")
+<pre><code>-   @if($firstName == "Andrea")
         &lt;h1&gt;About me: {{ $firstName }} {{ $lastName }}&lt;/h1&gt;
         &lt;p&gt;Lorem ipsum&lt;/p&gt;
     @else
         &lt;p&gt;Error&lt;/p&gt;
     @endif
-    ```
 </code></pre>
 <p>We have also</p>
 <pre><code>- @unless()
