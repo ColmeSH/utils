@@ -5,5 +5,6 @@ pages:
     - [grunt.md, Grunt Utils]
     - [mongodb.md, Mongo DB Utils]
     - [python.md, Python Utils]
+    - [laravel.md, Laravel Utils]
 
 theme: yeti
