@@ -216,35 +216,37 @@ You will need installed</p>
     @yield('footer') &lt;!-- You will be able to add this only in specific files --&gt;
 &lt;/body&gt;
 </code></pre>
-<p>In a random contact page:
-    <code>@extends('app')
-        @section('content')
-            &lt;h1&gt;Contact Me!&lt;/h1&gt;
-            &lt;p&gt;Lorem ipsum&lt;/p&gt;
-        @stop
-        @section('footer')
-            &lt;script&gt;some script&lt;/script&gt; &lt;!-- You will be able to avoid it in other pages --&gt;
-        @stop</code></p>
+<p>In a random contact page:</p>
+<pre><code>@extends('app')
+@section('content')
+    &lt;h1&gt;Contact Me!&lt;/h1&gt;
+    &lt;p&gt;Lorem ipsum&lt;/p&gt;
+@stop
+@section('footer')
+    &lt;script&gt;some script&lt;/script&gt; &lt;!-- You will be able to avoid it in other pages --&gt;
+@stop
+</code></pre>
 <h2 id="fast-if-statement-in-blade">Fast IF statement in blade</h2>
 <p>Instead of opening php tags</p>
-<pre><code>-   @if($firstName == "Andrea")
-        &lt;h1&gt;About me: {{ $firstName }} {{ $lastName }}&lt;/h1&gt;
-        &lt;p&gt;Lorem ipsum&lt;/p&gt;
-    @else
-        &lt;p&gt;Error&lt;/p&gt;
-    @endif
+<pre><code>@if($firstName == "Andrea")
+    &lt;h1&gt;About me: {{ $firstName }} {{ $lastName }}&lt;/h1&gt;
+    &lt;p&gt;Lorem ipsum&lt;/p&gt;
+@else
+    &lt;p&gt;Error&lt;/p&gt;
+@endif
 </code></pre>
 <p>We have also</p>
 <pre><code>- @unless()
--   The controller returning something like: $people = ['Alex', 'Gabri', 'Andre'];
-    @if(count($people))
-        &lt;h3&gt;People I like:&lt;/h3&gt;
-        &lt;ul&gt;
-            @foreach($people as $person)
-                &lt;li&gt;{{ $person }}&lt;/li&gt;
-            @endforeach
-        &lt;/ul&gt;
-    @endif
+- The controller returning something like: $people = ['Alex', 'Gabri', 'Andre'];
+
+@if(count($people))
+    &lt;h3&gt;People I like:&lt;/h3&gt;
+    &lt;ul&gt;
+        @foreach($people as $person)
+            &lt;li&gt;{{ $person }}&lt;/li&gt;
+        @endforeach
+    &lt;/ul&gt;
+@endif
 </code></pre>
 <h2 id="more-about-configuration">More about configuration</h2>
 <pre><code>- config folder--&gt;database.php
