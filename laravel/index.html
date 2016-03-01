@@ -208,13 +208,14 @@ You will need installed</p>
 - {{ $name }}
 </code></pre>
 <h2 id="master-and-sections">Master and sections</h2>
-<p>Create an app.blade.php file which will contain the basic html, in master:
-    <code>&lt;body&gt;
-            &lt;div class="container"&gt;
-                @yield('content')
-            &lt;/div&gt;
-            @yield('footer') &lt;!-- You will be able to add this only in specific files --&gt;
-        &lt;/body&gt;</code></p>
+<p>Create an app.blade.php file which will contain the basic html, in master:</p>
+<pre><code>&lt;body&gt;
+    &lt;div class="container"&gt;
+        @yield('content')
+    &lt;/div&gt;
+    @yield('footer') &lt;!-- You will be able to add this only in specific files --&gt;
+&lt;/body&gt;
+</code></pre>
 <p>In a random contact page:
     <code>@extends('app')
         @section('content')
