@@ -122,14 +122,12 @@ In a random contact page:
 
 Instead of opening php tags
 
-    -   ```html
-        @if($firstName == "Andrea")
+    -   @if($firstName == "Andrea")
             <h1>About me: {{ $firstName }} {{ $lastName }}</h1>
             <p>Lorem ipsum</p>
         @else
             <p>Error</p>
         @endif
-        ```
 
 We have also
 
