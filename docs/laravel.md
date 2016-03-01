@@ -67,7 +67,7 @@ This will search a PagesController with a method "about"
 
 Everything is inside .env file
 
-##Creating New Controller
+##Creating new controller
 
 You can do this with laravel cli called Artisan
 
@@ -98,12 +98,12 @@ in the html
 
 Create an app.blade.php file which will contain the basic html
 In master:
-    -   <body>
+    -   '<body>
             <div class="container">
                 @yield('content')
             </div>
             @yield('footer') <!-- You will be able to add this only in specific files -->
-        </body>
+        </body>'
 
 In a random contact page:
     -   @extends('app')
