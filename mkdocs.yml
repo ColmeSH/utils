@@ -6,5 +6,6 @@ pages:
     - [mongodb.md, Mongo DB Utils]
     - [python.md, Python Utils]
     - [laravel.md, Laravel Utils]
+    - [ethmining.md, Eth Mining]
 
 theme: yeti

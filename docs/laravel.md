@@ -246,3 +246,119 @@ A fast way to update
 
         - $article = App\Article::find(2);
         - $article->update(['body' => 'Updated!!']); //filling and saving it
+
+##Basic model/controller/view workflow
+Different way to create routes
+
+For small stuff you can create directly from route file something like
+
+    Route::get('foo', function(){
+        return "bar";
+    });
+
+or
+
+    Route::get('articles', 'ArticlesController@index');
+
+now create a controller from command line
+
+    - php artisan make:controller ArticlesController
+
+and add an index method to see if does it works
+
+    class ArticlesController extends Controller
+    {
+        public function index() {
+            return "Getting all articles";
+        }
+    }
+
+adding the class on the top
+
+    - use App\Article;
+
+and try to return all the articles (and then check the browser)
+
+    class ArticlesController extends Controller
+    {
+        public function index() {
+            //return "Getting all articles";
+
+            //fetching all the articles with eloquent
+            $articles = \App\Article::all();
+            return $articles;
+        }
+    }
+
+Now lets try to return a view with some stuff
+
+    class ArticlesController extends Controller
+    {
+        public function index() {
+            //return "Getting all articles";
+
+            //fetching all the articles with eloquent
+            $articles = \App\Article::all();
+            return view("articles.index", compact('articles'));
+            //or return view("articles.index")->with('articles', $articles);
+        }
+    }
+
+now add the folder and file
+
+    - mkdir resources/views/articles/index.blade.php
+
+and fill it with
+
+    @extends('app')
+    @section('content')
+        <h1>Articles</h1>
+        <hr>
+        @foreach($articles as $article)
+            <article>
+                <a href="#">
+                    <h3>{{$article->title}}</h3>
+                </a>
+                <div class="body">{{$article->body}}</div>
+            </article>
+        @endforeach
+    @stop
+
+and what about clicking the article title? Lets add a new route
+
+    - Route::get('articles/{id}', 'ArticlesController@show');
+
+Now add the new function inside the controller accepting the $id
+
+    public function show($id) {
+        $article = Article::findOrFail($id);
+
+        /*to avoid this you can use findOrFail
+            dd($article);
+            if(is_null($article)) { //if(!$article)
+                abort(404);
+            }
+        */
+
+        return view("articles.show", compact('article'));
+    }
+
+and create the view
+
+    - mkdir resources/views/articles/show.blade.php
+
+    @extends('app')
+    @section('content')
+        <h1>Articles</h1>
+        <hr>
+        @foreach($articles as $article)
+            <article>
+                {{--<a href="/articles/{{$article->id}}">--}}
+                {{--<a href="{{url('/articles', $article->id)}}">--}}
+                <a href="{{action('ArticlesController@show', [$article->id])}}">
+                    <h3>{{$article->title}}</h3>
+                </a>
+                <div class="body">{{$article->body}}</div>
+            </article>
+        @endforeach
+    @stop
