@@ -85,6 +85,12 @@
                 </li>
             
             
+            
+                <li >
+                    <a href="../ethmining/">Eth Mining</a>
+                </li>
+            
+            
             </ul>
 
             <!-- Search, Navigation and Repo links -->
@@ -94,8 +100,8 @@
                         <i class="fa fa-arrow-left"></i> Previous
                     </a>
                 </li>
-                <li class="disabled">
-                    <a rel="prev" >
+                <li >
+                    <a rel="prev" href="../ethmining/">
                         Next <i class="fa fa-arrow-right"></i>
                     </a>
                 </li>
@@ -132,6 +138,8 @@
             <li><a href="#migration">Migration</a></li>
         
             <li><a href="#eloquent-orm">Eloquent [ORM]</a></li>
+        
+            <li><a href="#basic-modelcontrollerview-workflow">Basic model/controller/view workflow</a></li>
         
     
     </ul>
@@ -331,6 +339,109 @@ exit from the tinker, re-open it and retry
 <p>A fast way to update</p>
 <pre><code>    - $article = App\Article::find(2);
     - $article-&gt;update(['body' =&gt; 'Updated!!']); //filling and saving it
+</code></pre>
+<h2 id="basic-modelcontrollerview-workflow">Basic model/controller/view workflow</h2>
+<p>Different way to create routes</p>
+<p>For small stuff you can create directly from route file something like</p>
+<pre><code>Route::get('foo', function(){
+    return "bar";
+});
+</code></pre>
+<p>or</p>
+<pre><code>Route::get('articles', 'ArticlesController@index');
+</code></pre>
+<p>now create a controller from command line</p>
+<pre><code>- php artisan make:controller ArticlesController
+</code></pre>
+<p>and add an index method to see if does it works</p>
+<pre><code>class ArticlesController extends Controller
+{
+    public function index() {
+        return "Getting all articles";
+    }
+}
+</code></pre>
+<p>adding the class on the top</p>
+<pre><code>- use App\Article;
+</code></pre>
+<p>and try to return all the articles (and then check the browser)</p>
+<pre><code>class ArticlesController extends Controller
+{
+    public function index() {
+        //return "Getting all articles";
+
+        //fetching all the articles with eloquent
+        $articles = \App\Article::all();
+        return $articles;
+    }
+}
+</code></pre>
+<p>Now lets try to return a view with some stuff</p>
+<pre><code>class ArticlesController extends Controller
+{
+    public function index() {
+        //return "Getting all articles";
+
+        //fetching all the articles with eloquent
+        $articles = \App\Article::all();
+        return view("articles.index", compact('articles'));
+        //or return view("articles.index")-&gt;with('articles', $articles);
+    }
+}
+</code></pre>
+<p>now add the folder and file</p>
+<pre><code>- mkdir resources/views/articles/index.blade.php
+</code></pre>
+<p>and fill it with</p>
+<pre><code>@extends('app')
+@section('content')
+    &lt;h1&gt;Articles&lt;/h1&gt;
+    &lt;hr&gt;
+    @foreach($articles as $article)
+        &lt;article&gt;
+            &lt;a href="#"&gt;
+                &lt;h3&gt;{{$article-&gt;title}}&lt;/h3&gt;
+            &lt;/a&gt;
+            &lt;div class="body"&gt;{{$article-&gt;body}}&lt;/div&gt;
+        &lt;/article&gt;
+    @endforeach
+@stop
+</code></pre>
+<p>and what about clicking the article title? Lets add a new route</p>
+<pre><code>- Route::get('articles/{id}', 'ArticlesController@show');
+</code></pre>
+<p>Now add the new function inside the controller accepting the $id</p>
+<pre><code>public function show($id) {
+    $article = Article::findOrFail($id);
+
+    /*to avoid this you can use findOrFail
+        dd($article);
+        if(is_null($article)) { //if(!$article)
+            abort(404);
+        }
+    */
+
+    return view("articles.show", compact('article'));
+}
+</code></pre>
+<p>and create the view</p>
+<pre><code>- mkdir resources/views/articles/show.blade.php
+
+@extends('app')
+@section('content')
+    &lt;h1&gt;Articles&lt;/h1&gt;
+    &lt;hr&gt;
+    @foreach($articles as $article)
+        &lt;article&gt;
+            {{--&lt;a href="/articles/{{$article-&gt;id}}"&gt;--}}
+            {{--&lt;a href="{{url('/articles', $article-&gt;id)}}"&gt;--}}
+            &lt;a href="{{action('ArticlesController@show', [$article-&gt;id])}}"&gt;
+                &lt;h3&gt;{{$article-&gt;title}}&lt;/h3&gt;
+            &lt;/a&gt;
+            &lt;div class="body"&gt;{{$article-&gt;body}}&lt;/div&gt;
+        &lt;/article&gt;
+    @endforeach
+@stop
 </code></pre></div>
         </div>
 
