@@ -1,7 +1,6 @@
 #Ethereum Mining
 
-Date: 13/03/16
-From Turin, Italy with <3.
+Date: 13/03/16, from Turin, Italy with <3.
 
 ##Introduction
 
