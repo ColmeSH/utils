@@ -1,11 +1,28 @@
 #Ethereum Mining
 
-From Turin, Italy with <3
+Date: 13/03/16
+From Turin, Italy with <3.
 
-##Test Environment
+##Introduction
+
+If your goal is to start mining in pool quickly you can just skip geth installation and start with:
+
+    - graphic card drivers
+    - a wallet (google chrome extension --> jaxx --> gives you back a brand new wallet address)
+    - ethminer setup
+
+and you can start mining just running:
+
+    - ethminer -G -F
+      http://eth1.nanopool.org:8888/yourAddress/nameOfYourMiner/yourEmailForGetNotifications
+
+We also recommend that you subscribe to a bitcoin exchange to make the purchase of your currency.
+
+##Our test environment
 
     - Intel i5 CPU
     - 12Gb ram
+    - SSD 256Gb
     - Nvidia GTX 770 [driver 352.79 - openCL 1.2]
     - 500W power supply
     - Ubuntu 14.04 - 64bit
@@ -39,12 +56,21 @@ From Turin, Italy with <3
 
     - reboot the system
 
+##Nvidia fan
+
+    - sudo nvidia-xconfig
+    - sudo nvidia-xconfig --cool-bits=4
+    - reboot system
+
+or
+
+    - sudo apt-get install nvclock
+    - nvclock -f -F 70 (to change GPU fan speed 70%)
+
 ##Geth setup
 
-If you want to mine in solo.
-
-Geth is used to insert your machine as a node in the ethereum network.
-You will be able to create a new account (wallet) and contribute with Ethminer software in the transaction validation process
+Geth is used to insert your machine as a node in the Ethereum network.
+You will be able to create a new local account (wallet) and contribute with Ethminer software in the transaction validation process.
 
     - you need a good editor and git installed on your system
       $ sudo apt-get install vim
@@ -56,15 +82,15 @@ You will be able to create a new account (wallet) and contribute with Ethminer s
       $ git clone https://github.com/ethereum/go-ethereum
       $ sudo apt-get install -y build-essential libgmp3-dev golang
 
-    - add some tunning
+    - add some tunning and environment variables:
       $ export GO_OPENCL=true
       $ export GPU_MAX_ALLOC_PERCENT=95
 
-    - compile geth
+    - compile geth:
       $ cd go-ethereum
       $ make geth
 
-    - if everything goes well try in the same folder
+    - if everything goes well try in the same folder:
       $ build/bin/geth gpuinfo
       and you will be able to see your graphic card infos
 
@@ -93,12 +119,15 @@ Locally
 
 Set of useful commands
 
-    - move to: $ cd ~/Desktop/go-ethereum/go-ethereum
+    - move to:
+      $ cd ~/Desktop/go-ethereum/go-ethereum
       and start the geth console:
-      $ ~/Desktop/go-ethereum/go-ethereum build/bin/geth --fast (starting up your local node and blockchain sync)
+      $ ~/Desktop/go-ethereum/go-ethereum build/bin/geth --fast
+      (starting up your local node and blockchain sync)
 
-    - open a new terminal tab $ cd ~/Desktop/go-ethereum/go-ethereum build/bin/geth attach (opening in a
-      new tab the geth console)
+    - open a new terminal tab:
+      $ cd ~/Desktop/go-ethereum/go-ethereum build/bin/geth attach
+      (opening in a new tab the geth console)
 
 In the geth console
 
@@ -116,11 +145,25 @@ To start pool mining (that means to attach your hash rate to other people and ha
       http://eth1.nanopool.org:8888/yourAddress/nameOfYourMiner/yourEmailForGetNotifications
       (not requiere geth running)
 
+##Ethminer tuning
 
+Reading on the internet we find out some interesting ethminer configuration.
+When running ethminer add this for nvidia cards:
+
+    - --cl-global-work 16384 (4096 or 8192 for CUDA mode)
+      —-cl-local-work 64, 128 or 256 depending on card (128 for CUDA mode)
+      -—farm-recheck 200 according to most pools.
+
+So the command cool be
+
+    - ethminer -G -F
+      http://eth1.nanopool.org:8888/yourAddress/nameOfYourMiner/yourEmailForGetNotifications --cl-local-work 128 --cl-global-work 4096 --farm-recheck 200
 
 ##Utils
 
-Could be a good idea signing up in a crypto currency exchange on the internet so you can change your ethereum reward in bitcoin or $, €, etc.
+As already mentioned a good idea could be signing up in a crypto currency exchange on the internet so you can change your ethereum reward in bitcoin or $, €, etc. like
+
+    - https://www.kraken.com
 
 Some links
 
