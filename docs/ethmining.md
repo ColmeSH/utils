@@ -30,7 +30,7 @@ From Turin, Italy with <3
 
     - download cuda drivers:
       https://developer.nvidia.com/cuda-downloads
-      select Linux, x86_64, Ubuntu, 14_04 and runfile(local)
+      select Linux, x86_64, Ubuntu, 14_04 and Deb(local)
 
     - move to your download folder:
       $ sudo dpkg -i cuda-repo-ubuntu1404_7.5-18_amd64.deb
