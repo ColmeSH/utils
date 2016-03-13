@@ -117,11 +117,15 @@
     
         <li class="main active"><a href="#ethereum-mining">Ethereum Mining</a></li>
         
-            <li><a href="#test-environment">Test Environment</a></li>
+            <li><a href="#introduction">Introduction</a></li>
+        
+            <li><a href="#our-test-environment">Our test environment</a></li>
         
             <li><a href="#nvidia-driver-setup">Nvidia driver setup</a></li>
         
             <li><a href="#nvidia-cuda-toolkit-setup">Nvidia cuda toolkit setup</a></li>
+        
+            <li><a href="#nvidia-fan">Nvidia fan</a></li>
         
             <li><a href="#geth-setup">Geth setup</a></li>
         
@@ -130,6 +134,8 @@
             <li><a href="#managing-accounts">Managing accounts</a></li>
         
             <li><a href="#commands">Commands</a></li>
+        
+            <li><a href="#ethminer-tuning">Ethminer tuning</a></li>
         
             <li><a href="#utils">Utils</a></li>
         
@@ -141,10 +147,23 @@
             <div class="col-md-9" role="main">
 
 <h1 id="ethereum-mining">Ethereum Mining</h1>
-<p>From Turin, Italy with &lt;3</p>
-<h2 id="test-environment">Test Environment</h2>
+<p>Date: 13/03/16
+From Turin, Italy with &lt;3.</p>
+<h2 id="introduction">Introduction</h2>
+<p>If your goal is to start mining in pool quickly you can just skip geth installation and start with:</p>
+<pre><code>- graphic card drivers
+- a wallet (google chrome extension --&gt; jaxx --&gt; gives you back a brand new wallet address)
+- ethminer setup
+</code></pre>
+<p>and you can start mining just running:</p>
+<pre><code>- ethminer -G -F
+  http://eth1.nanopool.org:8888/yourAddress/nameOfYourMiner/yourEmailForGetNotifications
+</code></pre>
+<p>We also recommend that you subscribe to a bitcoin exchange to make the purchase of your currency.</p>
+<h2 id="our-test-environment">Our test environment</h2>
 <pre><code>- Intel i5 CPU
 - 12Gb ram
+- SSD 256Gb
 - Nvidia GTX 770 [driver 352.79 - openCL 1.2]
 - 500W power supply
 - Ubuntu 14.04 - 64bit
@@ -176,10 +195,18 @@
 
 - reboot the system
 </code></pre>
+<h2 id="nvidia-fan">Nvidia fan</h2>
+<pre><code>- sudo nvidia-xconfig
+- sudo nvidia-xconfig --cool-bits=4
+- reboot system
+</code></pre>
+<p>or</p>
+<pre><code>- sudo apt-get install nvclock
+- nvclock -f -F 70 (to change GPU fan speed 70%)
+</code></pre>
 <h2 id="geth-setup">Geth setup</h2>
-<p>If you want to mine in solo.</p>
-<p>Geth is used to insert your machine as a node in the ethereum network.
-You will be able to create a new account (wallet) and contribute with Ethminer software in the transaction validation process</p>
+<p>Geth is used to insert your machine as a node in the Ethereum network.
+You will be able to create a new local account (wallet) and contribute with Ethminer software in the transaction validation process.</p>
 <pre><code>- you need a good editor and git installed on your system
   $ sudo apt-get install vim
   $ sudo apt-get install git
@@ -190,15 +217,15 @@ You will be able to create a new account (wallet) and contribute with Ethminer s
   $ git clone https://github.com/ethereum/go-ethereum
   $ sudo apt-get install -y build-essential libgmp3-dev golang
 
-- add some tunning
+- add some tunning and environment variables:
   $ export GO_OPENCL=true
   $ export GPU_MAX_ALLOC_PERCENT=95
 
-- compile geth
+- compile geth:
   $ cd go-ethereum
   $ make geth
 
-- if everything goes well try in the same folder
+- if everything goes well try in the same folder:
   $ build/bin/geth gpuinfo
   and you will be able to see your graphic card infos
 </code></pre>
@@ -219,12 +246,15 @@ You will be able to create a new account (wallet) and contribute with Ethminer s
 </code></pre>
 <h2 id="commands">Commands</h2>
 <p>Set of useful commands</p>
-<pre><code>- move to: $ cd ~/Desktop/go-ethereum/go-ethereum
+<pre><code>- move to:
+  $ cd ~/Desktop/go-ethereum/go-ethereum
   and start the geth console:
-  $ ~/Desktop/go-ethereum/go-ethereum build/bin/geth --fast (starting up your local node and blockchain sync)
+  $ ~/Desktop/go-ethereum/go-ethereum build/bin/geth --fast
+  (starting up your local node and blockchain sync)
 
-- open a new terminal tab $ cd ~/Desktop/go-ethereum/go-ethereum build/bin/geth attach (opening in a
-  new tab the geth console)
+- open a new terminal tab:
+  $ cd ~/Desktop/go-ethereum/go-ethereum build/bin/geth attach
+  (opening in a new tab the geth console)
 </code></pre>
 <p>In the geth console</p>
 <pre><code>- &gt; web3.eth.coinbase (checking your account address)
@@ -239,8 +269,21 @@ You will be able to create a new account (wallet) and contribute with Ethminer s
   http://eth1.nanopool.org:8888/yourAddress/nameOfYourMiner/yourEmailForGetNotifications
   (not requiere geth running)
 </code></pre>
+<h2 id="ethminer-tuning">Ethminer tuning</h2>
+<p>Reading on the internet we find out some interesting ethminer configuration.
+When running ethminer add this for nvidia cards:</p>
+<pre><code>- --cl-global-work 16384 (4096 or 8192 for CUDA mode)
+  —-cl-local-work 64, 128 or 256 depending on card (128 for CUDA mode)
+  -—farm-recheck 200 according to most pools.
+</code></pre>
+<p>So the command cool be</p>
+<pre><code>- ethminer -G -F
+  http://eth1.nanopool.org:8888/yourAddress/nameOfYourMiner/yourEmailForGetNotifications --cl-local-work 128 --cl-global-work 4096 --farm-recheck 200
+</code></pre>
 <h2 id="utils">Utils</h2>
-<p>Could be a good idea signing up in a crypto currency exchange on the internet so you can change your ethereum reward in bitcoin or $, €, etc.</p>
+<p>As already mentioned a good idea could be signing up in a crypto currency exchange on the internet so you can change your ethereum reward in bitcoin or $, €, etc. like</p>
+<pre><code>- https://www.kraken.com
+</code></pre>
 <p>Some links</p>
 <pre><code>- https://ethereum.gitbooks.io/frontier-guide/content/getting_a_client.html
 - http://nanopool.org/help
