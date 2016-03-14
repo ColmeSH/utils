@@ -144,7 +144,7 @@ To start pool mining (that means to attach your hash rate to other people and ha
       http://eth1.nanopool.org:8888/yourAddress/nameOfYourMiner/yourEmailForGetNotifications
       (not requiere geth running)
 
-##Ethminer tuning
+##Ethminer tunning
 
 Reading on the internet we find out some interesting ethminer configuration.
 When running ethminer add this for nvidia cards:
