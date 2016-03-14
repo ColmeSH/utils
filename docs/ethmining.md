@@ -183,7 +183,7 @@ We are active in different telegram chat and chatting with other miners the most
     - https://ethereumpool.co/
     - http://eth.unitedminers.cloud/
 
-##Eth proxy [working progress]
+##Eth proxy
 
 Since we have not had much luck with nanopool even if their assistance is very good we decided to try Dwarfpool
 
@@ -200,47 +200,47 @@ You just need to:
     - move inside the repository folder and change the config data in ethproxy.conf like this:
       $ sudo vim ethproxy.conf
 
-        # Select Ethereum ETH or Expanse EXP
-        COIN = "ETH"
+      # Select Ethereum ETH or Expanse EXP
+      COIN = "ETH"
 
-        # Host and port for your workers
-        HOST = "0.0.0.0"
-        PORT = 8080
+      # Host and port for your workers
+      HOST = "0.0.0.0"
+      PORT = 8080
 
-        # Coin address where money goes
-        WALLET = "yourWallet"
+      # Coin address where money goes
+      WALLET = "yourWallet"
 
-        # To donate please use wallet "0xea7263feb7d8a8ab0a11eedd8f1ce04412ab0820"
+      # To donate please use wallet "0xea7263feb7d8a8ab0a11eedd8f1ce04412ab0820"
 
-        # It's useful for individually monitoring and statistic
-        ENABLE_WORKER_ID = True
+      # It's useful for individually monitoring and statistic
+      ENABLE_WORKER_ID = True
 
-        # On DwarfPool you have option to monitor your workers via email.
-        # If WORKER_ID is enabled, you can monitor every worker/rig separately.
-        MONITORING = True
-        MONITORING_EMAIL = "yourEmail"
+      # On DwarfPool you have option to monitor your workers via email.
+      # If WORKER_ID is enabled, you can monitor every worker/rig separately.
+      MONITORING = True
+      MONITORING_EMAIL = "yourEmail"
 
-        # Main pool
-        POOL_HOST = "eth-eu.dwarfpool.com"
-        POOL_PORT = 8008
+      # Main pool
+      POOL_HOST = "eth-eu.dwarfpool.com"
+      POOL_PORT = 8008
 
-        # Failover pool
-        POOL_FAILOVER_ENABLE = True
+      # Failover pool
+      POOL_FAILOVER_ENABLE = True
 
-        POOL_HOST_FAILOVER1 = "eth-ru.dwarfpool.com"
-        POOL_PORT_FAILOVER1 = 8008
+      POOL_HOST_FAILOVER1 = "eth-ru.dwarfpool.com"
+      POOL_PORT_FAILOVER1 = 8008
 
-        POOL_HOST_FAILOVER2 = "eth-us.dwarfpool.com"
-        POOL_PORT_FAILOVER2 = 8008
+      POOL_HOST_FAILOVER2 = "eth-us.dwarfpool.com"
+      POOL_PORT_FAILOVER2 = 8008
 
-        POOL_HOST_FAILOVER3 = "eth-hk.dwarfpool.com"
-        POOL_PORT_FAILOVER3 = 8008
+      POOL_HOST_FAILOVER3 = "eth-hk.dwarfpool.com"
+      POOL_PORT_FAILOVER3 = 8008
 
-        # Logging
-        LOG_TO_FILE = True
+      # Logging
+      LOG_TO_FILE = True
 
-        # Enable debug
-        DEBUG = False
+      # Enable debug
+      DEBUG = False
 
     - save it, close it and run it from the repository folder with:
       $ python ethproxy.py
