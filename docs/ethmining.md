@@ -163,6 +163,8 @@ So the command cool be
 As already mentioned a good idea could be signing up in a crypto currency exchange on the internet so you can change your ethereum reward in bitcoin or $, €, etc. like
 
     - https://www.kraken.com
+    - https://poloniex.com/
+    - https://www.bitfinex.com/
 
 Some links
 
@@ -180,3 +182,5 @@ We are active in different telegram chat and chatting with other miners the most
     - http://ethpool.org/
     - https://ethereumpool.co/
     - http://eth.unitedminers.cloud/
+
+##Eth proxy [working progress]
