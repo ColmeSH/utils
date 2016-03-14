@@ -135,7 +135,7 @@
         
             <li><a href="#commands">Commands</a></li>
         
-            <li><a href="#ethminer-tunning">Ethminer tunning</a></li>
+            <li><a href="#ethminer-tuning">Ethminer tuning</a></li>
         
             <li><a href="#utils">Utils</a></li>
         
@@ -218,7 +218,7 @@ You will be able to create a new local account (wallet) and contribute with Ethm
   $ git clone https://github.com/ethereum/go-ethereum
   $ sudo apt-get install -y build-essential libgmp3-dev golang
 
-- add some tunning and environment variables:
+- add some tuning and environment variables:
   $ export GO_OPENCL=true
   $ export GPU_MAX_ALLOC_PERCENT=95
 
@@ -270,7 +270,7 @@ You will be able to create a new local account (wallet) and contribute with Ethm
   http://eth1.nanopool.org:8888/yourAddress/nameOfYourMiner/yourEmailForGetNotifications
   (not requiere geth running)
 </code></pre>
-<h2 id="ethminer-tunning">Ethminer tunning</h2>
+<h2 id="ethminer-tuning">Ethminer tuning</h2>
 <p>Reading on the internet we find out some interesting ethminer configuration.
 When running ethminer add this for nvidia cards:</p>
 <pre><code>- --cl-global-work 16384 (4096 or 8192 for CUDA mode)
