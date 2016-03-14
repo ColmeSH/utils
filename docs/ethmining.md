@@ -153,7 +153,7 @@ When running ethminer add this for nvidia cards:
       —-cl-local-work 64, 128 or 256 depending on card (128 for CUDA mode)
       -—farm-recheck 200 according to most pools.
 
-So the command cool be
+So the command could be:
 
     - ethminer -G -F
       http://eth1.nanopool.org:8888/yourAddress/nameOfYourMiner/yourEmailForGetNotifications --cl-local-work 128 --cl-global-work 4096 --farm-recheck 200
