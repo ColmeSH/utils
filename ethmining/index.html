@@ -301,7 +301,70 @@ When running ethminer add this for nvidia cards:</p>
 - https://ethereumpool.co/
 - http://eth.unitedminers.cloud/
 </code></pre>
-<h2 id="eth-proxy-working-progress">Eth proxy [working progress]</h2></div>
+<h2 id="eth-proxy-working-progress">Eth proxy [working progress]</h2>
+<p>Since we have not had much luck with nanopool even if their assistance is very good we decided to try Dwarfpool</p>
+<p>PLUS,</p>
+<p>according to their documentation, Stratum-Proxy for Ethereum.</p>
+<p>You just need to:</p>
+<pre><code>- clone the repository into your Desktop or wherever:
+  $ git clone https://github.com/Atrides/eth-proxy.git
+- install dependency with:
+  $ sudo apt-get install python-twisted
+- move inside the repository folder and change the config data in ethproxy.conf like this:
+  $ sudo vim ethproxy.conf
+
+    # Select Ethereum ETH or Expanse EXP
+    COIN = "ETH"
+
+    # Host and port for your workers
+    HOST = "0.0.0.0"
+    PORT = 8080
+
+    # Coin address where money goes
+    WALLET = "yourWallet"
+
+    # To donate please use wallet "0xea7263feb7d8a8ab0a11eedd8f1ce04412ab0820"
+
+    # It's useful for individually monitoring and statistic
+    ENABLE_WORKER_ID = True
+
+    # On DwarfPool you have option to monitor your workers via email.
+    # If WORKER_ID is enabled, you can monitor every worker/rig separately.
+    MONITORING = True
+    MONITORING_EMAIL = "yourEmail"
+
+    # Main pool
+    POOL_HOST = "eth-eu.dwarfpool.com"
+    POOL_PORT = 8008
+
+    # Failover pool
+    POOL_FAILOVER_ENABLE = True
+
+    POOL_HOST_FAILOVER1 = "eth-ru.dwarfpool.com"
+    POOL_PORT_FAILOVER1 = 8008
+
+    POOL_HOST_FAILOVER2 = "eth-us.dwarfpool.com"
+    POOL_PORT_FAILOVER2 = 8008
+
+    POOL_HOST_FAILOVER3 = "eth-hk.dwarfpool.com"
+    POOL_PORT_FAILOVER3 = 8008
+
+    # Logging
+    LOG_TO_FILE = True
+
+    # Enable debug
+    DEBUG = False
+
+- save it, close it and run it from the repository folder with:
+  $ python ethproxy.py
+
+- run your miner with:
+  ethminer -G -F http://127.0.0.1:8080 --cl-local-work 128 --cl-global-work 4096 --farm-recheck 200
+</code></pre>
+<p>Releated link:</p>
+<pre><code>- https://bitcointalk.org/index.php?topic=1200891
+- https://github.com/Atrides/eth-proxy
+</code></pre></div>
         </div>
 
         <footer class="col-md-12">
