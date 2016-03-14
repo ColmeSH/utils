@@ -81,7 +81,7 @@ You will be able to create a new local account (wallet) and contribute with Ethm
       $ git clone https://github.com/ethereum/go-ethereum
       $ sudo apt-get install -y build-essential libgmp3-dev golang
 
-    - add some tunning and environment variables:
+    - add some tuning and environment variables:
       $ export GO_OPENCL=true
       $ export GPU_MAX_ALLOC_PERCENT=95
 
@@ -144,7 +144,7 @@ To start pool mining (that means to attach your hash rate to other people and ha
       http://eth1.nanopool.org:8888/yourAddress/nameOfYourMiner/yourEmailForGetNotifications
       (not requiere geth running)
 
-##Ethminer tunning
+##Ethminer tuning
 
 Reading on the internet we find out some interesting ethminer configuration.
 When running ethminer add this for nvidia cards:
