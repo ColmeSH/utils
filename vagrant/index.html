@@ -156,15 +156,13 @@
             <li><a href="#pre-post-tasks">Pre &amp; Post tasks</a></li>
         
     
-        <li class="main "><a href="#more-interesting-stuff">More interesting stuff</a></li>
+        <li class="main "><a href="#run-custom-bash-script-on-vagrant-up-command">Run custom bash script on vagrant up command</a></li>
         
-            <li><a href="#run-custom-bash-script-on-vagrant-up-command">Run custom bash script on vagrant up command</a></li>
+    
+        <li class="main "><a href="#port-forwarding">Port forwarding</a></li>
         
-            <li><a href="#port-forwarding">Port forwarding</a></li>
-        
-            <li><a href="#host-manager">Host-manager</a></li>
-        
-            <li><a href="#vagrant-manager">Vagrant-manager</a></li>
+    
+        <li class="main "><a href="#more-utils">More utils</a></li>
         
     
     </ul>
@@ -314,18 +312,16 @@ The secret here is that Ansible will always look for a Task file called main.yml
 <p>Before we try this out, there's one more thing we need to do.
 Ansible runs your Roles before your Tasks, so our packages will be installed before we've updated the apt cache.
 To fix this, we need to rename our 'tasks': key in playbook.yml to 'pre_tasks'.</p>
-<h1 id="more-interesting-stuff">More interesting stuff</h1>
-<h2 id="run-custom-bash-script-on-vagrant-up-command">Run custom bash script on vagrant up command</h2>
+<h1 id="run-custom-bash-script-on-vagrant-up-command">Run custom bash script on vagrant up command</h1>
 <p>Yes it's possible adding additional code.
 An example is provided in the vagrant file!</p>
-<h2 id="port-forwarding">Port forwarding</h2>
+<h1 id="port-forwarding">Port forwarding</h1>
 <p>Vagrant forwarded ports allow you to access a port on your host machine and have all data forwarded to a port on the guest machine, over either TCP or UDP.</p>
 <p>For example: If the guest machine is running a web server listening on port 80, you can make a forwarded port mapping to port 8080 (or anything) on your host machine. You can then open your browser to localhost:8080 and browse the website, while all actual network data is being sent to the guest.</p>
-<h2 id="host-manager">Host-manager</h2>
+<h1 id="more-utils">More utils</h1>
 <pre><code>- https://github.com/smdahlen/vagrant-hostmanager
 </code></pre>
 <p>vagrant-hostmanager is a Vagrant 1.1+ plugin that manages the /etc/hosts file on guest machines (and optionally the host). Its goal is to enable resolution of multi-machine environments deployed with a cloud provider where IP addresses are not known in advance.</p>
-<h2 id="vagrant-manager">Vagrant-manager</h2>
 <p>Manage your vagrant machines in one place with GUI.</p>
 <pre><code>- http://vagrantmanager.com/
 </code></pre>
