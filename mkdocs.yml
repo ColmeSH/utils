@@ -10,3 +10,4 @@ pages:
     - [ethmining.md, Eth Mining]
 
 theme: yeti
+extra_css: [extra.css]
