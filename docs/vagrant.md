@@ -10,8 +10,6 @@ you can find my experiments with Vagrant + Ansible.
 
 Each branch represents a specific development environment.
 
-#Pre-requirements
-
 To start using Vagrant go to
 
     - http://www.vagrantup.com/downloads
