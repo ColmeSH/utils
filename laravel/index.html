@@ -548,7 +548,45 @@ public function update(Request $request, Note $note)
     return back();
 }
 </code></pre>
-<h2 id="authenticate-your-users">Authenticate Your Users</h2></div>
+<h2 id="authenticate-your-users">Authenticate Your Users</h2>
+<p>Basic login/registration, usually is done at the very beginning of your project</p>
+<pre><code>- php artisan make:auth
+- php artisan migrate
+</code></pre>
+<p>Now you should be ready to test the laravel register and login out of the box functions</p>
+<p>To test the forgotten psw e-mail you should change your local .env like this</p>
+<pre><code>- MAIL_DRIVER=log
+</code></pre>
+<p>Setup also from config/mail.php</p>
+<pre><code>- 'from' =&gt; ['address' =&gt; 'yourmail@something.something', 'name' =&gt; 'My Company Support']
+</code></pre>
+<p>Now if you try to restore your password it will run using your registration e-mail 
+but you wont receive any e-mail, you will be able to check in</p>
+<pre><code>- more storage/logs/laravel.log or tail -f storage/logs/laravel.log
+</code></pre>
+<p>You should see something like</p>
+<pre><code>- Date: Sat, 30 Jul 2016 14:37:53 +0000
+  Subject: Your Password Reset Link
+  From: Andrea Speziale Mail &lt;andreaf.speziale@gmail.com&gt;
+  To: andreaf.speziale@gmail.com
+  MIME-Version: 1.0
+  Content-Type: text/html; charset=utf-8
+  Content-Transfer-Encoding: quoted-printable
+
+  Click here to reset your password: 
+  &lt;a href="http://localhost:8080/password/reset/5d09c9f1640669def46092bbecc8c02949be8b51bd1a1c49a180dea5613e1b9c?email=andreaf.speziale%40gmail.com"&gt; http://localhost:8080/password/reset/5d09c9f1640669def46092bbecc8c02949be8b51bd1a1c49a180dea5613e1b9c?email=andreaf.speziale%40gmail.com &lt;/a&gt;
+</code></pre>
+<p>If you copy on your browser the <a> link you will be redirect to the password reset page</p>
+<p>Notice that in your routes file laravel added </p>
+<pre><code>- Route::auth();
+</code></pre>
+<p>In Router.php searching for auth you will find all the route</p>
+<p>If you need to override something you will find everything in</p>
+<pre><code>- Http/Controller/auth
+</code></pre>
+<p>All the views are stored in</p>
+<pre><code>- Resources/views/auth
+</code></pre></div>
         </div>
 
         <footer class="col-md-12">
