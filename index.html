@@ -76,19 +76,7 @@
             
             
                 <li >
-                    <a href="python/">Python Utils</a>
-                </li>
-            
-            
-            
-                <li >
                     <a href="laravel/">Laravel Utils</a>
-                </li>
-            
-            
-            
-                <li >
-                    <a href="vagrant/">Vagrant Utils</a>
                 </li>
             
             
@@ -102,6 +90,11 @@
 
             <!-- Search, Navigation and Repo links -->
             <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                        <i class="fa fa-search"></i> Search
+                    </a>
+                </li>
                 <li class="disabled">
                     <a rel="next" >
                         <i class="fa fa-arrow-left"></i> Previous
@@ -126,8 +119,6 @@
         
             <li><a href="#requirements">Requirements</a></li>
         
-            <li><a href="#useful-links-for-installation-and-more">Useful Links for Installation and More</a></li>
-        
             <li><a href="#contributing">Contributing</a></li>
         
             <li><a href="#gh-pages">Gh-Pages</a></li>
@@ -141,14 +132,7 @@
 <p>Hey thank you for enjoying to my personal documentation.
 You will find useful tips for Git, MongoDB and more...    </p>
 <h2 id="requirements">Requirements</h2>
-<pre><code>MAC OSX or a linux based OS
-</code></pre>
-<h2 id="useful-links-for-installation-and-more">Useful Links for Installation and More</h2>
-<p><a href="https://git-scm.com/">Git</a></p>
-<p><a href="http://gruntjs.com/getting-started">Grunt</a></p>
-<p><a href="http://docs.mongodb.org/manual/tutorial/install-mongodb-on-os-x/">MongoDB</a></p>
-<p><a href="https://www.python.org/">Python</a></p>
-<p><a href="http://www.mkdocs.org/">MKDOCS</a></p>
+<p>MAC OSX or a linux based OS, <a href="https://www.python.org/">Python</a> and <a href="http://www.mkdocs.org/">MKDOCS</a></p>
 <h2 id="contributing">Contributing</h2>
 <p>This documentation it's very easy to use and customize.</p>
 <p>You can clone it and use it for yourself by simply changing the remote path of the repo,
@@ -173,6 +157,33 @@ yourGitHubUsername.github.io/repositoryName.
         <script src="./js/jquery-1.10.2.min.js"></script>
         <script src="./js/bootstrap-3.0.3.min.js"></script>
         <script src="./js/highlight.pack.js"></script>
+        <script>var base_url = '.';</script>
+        <script data-main="./mkdocs/js/search.js" src="./mkdocs/js/require.js"></script>
         <script src="./js/base.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>
+                            From here you can search these documents. Enter
+                            your search terms below.
+                        </p>
+                        <form role="form">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
+                            </div>
+                        </form>
+                        <div id="mkdocs-search-results"></div>
+                    </div>
+                    <div class="modal-footer">
+                    </div>
+                </div>
+            </div>
+        </div>
     </body>
 </html>

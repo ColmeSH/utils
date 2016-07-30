@@ -75,20 +75,8 @@
             
             
             
-                <li >
-                    <a href="../python/">Python Utils</a>
-                </li>
-            
-            
-            
                 <li class="active">
                     <a href="./">Laravel Utils</a>
-                </li>
-            
-            
-            
-                <li >
-                    <a href="../vagrant/">Vagrant Utils</a>
                 </li>
             
             
@@ -102,13 +90,18 @@
 
             <!-- Search, Navigation and Repo links -->
             <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                        <i class="fa fa-search"></i> Search
+                    </a>
+                </li>
                 <li >
-                    <a rel="next" href="../python/">
+                    <a rel="next" href="../mongodb/">
                         <i class="fa fa-arrow-left"></i> Previous
                     </a>
                 </li>
                 <li >
-                    <a rel="prev" href="../vagrant/">
+                    <a rel="prev" href="../ethmining/">
                         Next <i class="fa fa-arrow-right"></i>
                     </a>
                 </li>
@@ -126,7 +119,7 @@
         
             <li><a href="#composer">Composer</a></li>
         
-            <li><a href="#homestead">Homestead</a></li>
+            <li><a href="#laravel-vagrant">Laravel Vagrant</a></li>
         
             <li><a href="#structure">Structure</a></li>
         
@@ -148,6 +141,14 @@
         
             <li><a href="#basic-modelcontrollerview-workflow">Basic model/controller/view workflow</a></li>
         
+            <li><a href="#defining-relationships-with-eloquent">Defining Relationships With Eloquent</a></li>
+        
+            <li><a href="#forms-validation">Forms &amp; Validation</a></li>
+        
+            <li><a href="#updating-record">Updating Record</a></li>
+        
+            <li><a href="#authenticate-your-users">Authenticate Your Users</a></li>
+        
     
     </ul>
 </div></div>
@@ -168,32 +169,17 @@ Install with</p>
 <p>Create a new virgin laravel project with</p>
 <pre><code>- composer create-project laravel/laravel NAME
 </code></pre>
-<h2 id="homestead">Homestead</h2>
+<h2 id="laravel-vagrant">Laravel Vagrant</h2>
 <p>Laravel ready environment.
 You will need installed</p>
 <pre><code>- virtualbox
 - vagrant
+- ansible 2+
 </code></pre>
-<p>Add the homestead vagrant box with</p>
-<pre><code>- vagrant box add laravel/homestead
+<p>Suggested repositories</p>
+<pre><code>- https://github.com/andreafspeziale/laravel_vagrant
+- https://github.com/gab88slash/vagrant-modern-php-development
 </code></pre>
-<p>Install homestead with composer</p>
-<pre><code>- composer global require "laravel/homestead=~2.0"
-</code></pre>
-<p>Be sure to add the PATH to your bash or zsh profile in order to use homestead</p>
-<pre><code>- export PATH:~/.composer/vendor/bin:$PATH
-</code></pre>
-<p>Try to run homestead and you will see all the commands available</p>
-<pre><code>- homestead
-</code></pre>
-<p>Check .homestead folder ~ or the configuration with</p>
-<pre><code>- homestead edit
-</code></pre>
-<p>[PROBLEMS] - 500 server error, nginx has permission problems</p>
-<p>Laracasts is using homestead like this</p>
-<pre><code>- serve domain path
-</code></pre>
-<p>but its searching for a file called serve.sh and I have serve-laravel and I can't cp it</p>
 <h2 id="structure">Structure</h2>
 <p>app HTTP --&gt; routes.php --&gt; route file</p>
 <pre><code>- Route::get('about', 'PagesController@about');
@@ -449,7 +435,120 @@ exit from the tinker, re-open it and retry
         &lt;/article&gt;
     @endforeach
 @stop
-</code></pre></div>
+</code></pre>
+<h2 id="defining-relationships-with-eloquent">Defining Relationships With Eloquent</h2>
+<p>We have for instance a Card which has many Notes. 
+Each Note was wtitten by a User.</p>
+<p>You can see below the models that describes those relationships:</p>
+<pre><code>- Card Model
+class Card extends Model
+{
+    public function notes()
+    {
+        return $this-&gt;hasMany(Note::class);
+    }
+
+    public function addNote(Note $note, $userId)
+    {
+        $note-&gt;user_id = $userId;
+        return $this-&gt;notes()-&gt;save($note);
+    }
+}
+
+- Note Model
+class Note extends Model
+{
+    protected $fillable = ['body'];
+
+    public function card()
+    {
+        return $this-&gt;belongsTo(Card::class);
+    }
+
+    public function user()
+    {
+        return $this-&gt;belongsTo(User::class);
+    }
+
+    public function by(User $user)
+    {
+        $this-&gt;user_id = $user-&gt;id;
+    }
+}
+</code></pre>
+<h2 id="forms-validation">Forms &amp; Validation</h2>
+<p>Let's add a Note to a Card for instance:</p>
+<pre><code>- add a posting route
+Route::post('cards/{card}/notes', 'NotesController@store');
+
+- add a form from the view
+&lt;h3&gt;Add a new note&lt;/h3&gt;
+    &lt;form action="/cards/{{ $card-&gt;id }}/notes" method="POST"&gt;
+        {{-- showing the token --}}
+        {!! csrf_token() !!}
+        &lt;div class="form-group"&gt;
+            &lt;textarea name="body" class="form-control"&gt;{{ old('body') }}&lt;/textarea&gt;
+        &lt;/div&gt;
+        &lt;div class="form-group"&gt;
+            &lt;button type="submit" class="btn btn-default pull-right"&gt;Add note&lt;/button&gt;
+        &lt;/div&gt;
+        {{-- this include the generated token in the request --}}
+        {!! csrf_field() !!}
+    &lt;/form&gt;
+    {{-- checking the validation exception message --}}
+    {{-- {{ var_dump($errors) }} --}}
+    @if(count($errors))
+        &lt;ul&gt;
+            @foreach($errors-&gt;all() as $error)
+                &lt;li&gt;{{ $error }}&lt;/li&gt;
+            @endforeach
+        &lt;/ul&gt;
+    @endif
+
+- from the posting route by the store method
+public function store(Request $request, Card $card)
+    {
+        $this-&gt;validate($request, [
+            'body' =&gt; 'required|min:10'
+        ]);
+
+        $note = New Note($request-&gt;all());
+
+        $card-&gt;addNote($note, 1);
+        return back();
+    }
+</code></pre>
+<h2 id="updating-record">Updating Record</h2>
+<p>Let's try to update a Note</p>
+<pre><code>- add a get and patch route to serve the update page and perform action 
+Route::get('notes/{note}/edit', 'NotesController@edit');
+Route::patch('notes/{note}', 'NotesController@update');
+
+- edit form from the edit note page
+&lt;form action="/notes/{{ $note-&gt;id }}" method="POST"&gt;
+    {{ method_field('PATCH') }}
+    &lt;div class="form-group"&gt;
+        &lt;textarea name="body" class="form-control"&gt;{{ $note-&gt;body }}&lt;/textarea&gt;
+    &lt;/div&gt;
+    &lt;div class="form-group"&gt;
+        &lt;button type="submit" class="btn btn-default pull-right"&gt;Update note&lt;/button&gt;
+    &lt;/div&gt;
+    {!! csrf_field() !!}
+&lt;/form&gt;
+
+- and the methods in the controller
+public function edit(Note $note)
+{
+    return view('notes.edit', compact('note'));
+}
+
+public function update(Request $request, Note $note)
+{
+    $note-&gt;update($request-&gt;all());
+    return back();
+}
+</code></pre>
+<h2 id="authenticate-your-users">Authenticate Your Users</h2></div>
         </div>
 
         <footer class="col-md-12">
@@ -461,6 +560,33 @@ exit from the tinker, re-open it and retry
         <script src="../js/jquery-1.10.2.min.js"></script>
         <script src="../js/bootstrap-3.0.3.min.js"></script>
         <script src="../js/highlight.pack.js"></script>
+        <script>var base_url = '..';</script>
+        <script data-main="../mkdocs/js/search.js" src="../mkdocs/js/require.js"></script>
         <script src="../js/base.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>
+                            From here you can search these documents. Enter
+                            your search terms below.
+                        </p>
+                        <form role="form">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
+                            </div>
+                        </form>
+                        <div id="mkdocs-search-results"></div>
+                    </div>
+                    <div class="modal-footer">
+                    </div>
+                </div>
+            </div>
+        </div>
     </body>
 </html>

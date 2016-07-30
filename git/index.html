@@ -76,19 +76,7 @@
             
             
                 <li >
-                    <a href="../python/">Python Utils</a>
-                </li>
-            
-            
-            
-                <li >
                     <a href="../laravel/">Laravel Utils</a>
-                </li>
-            
-            
-            
-                <li >
-                    <a href="../vagrant/">Vagrant Utils</a>
                 </li>
             
             
@@ -102,6 +90,11 @@
 
             <!-- Search, Navigation and Repo links -->
             <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                        <i class="fa fa-search"></i> Search
+                    </a>
+                </li>
                 <li >
                     <a rel="next" href="..">
                         <i class="fa fa-arrow-left"></i> Previous
@@ -136,13 +129,19 @@
         
             <li><a href="#check-repository-status">Check Repository Status</a></li>
         
-            <li><a href="#list-branch">List branch</a></li>
+            <li><a href="#discard-changes">Discard Changes</a></li>
         
             <li><a href="#create-and-move-to-a-new-branch">Create and move to a new branch</a></li>
+        
+            <li><a href="#list-branch">List branch</a></li>
         
             <li><a href="#merging">Merging</a></li>
         
             <li><a href="#delete-file-from-repo">Delete file from repo</a></li>
+        
+            <li><a href="#tag-and-release">Tag and Release</a></li>
+        
+            <li><a href="#tips">Tips</a></li>
         
     
     </ul>
@@ -194,9 +193,15 @@
 <p>Move to your command line window and type:</p>
 <pre><code>- 'git status'
 </code></pre>
-<h2 id="list-branch">List branch</h2>
-<p>Move to your command line window and type:</p>
-<pre><code>- 'git branch -a'
+<h2 id="discard-changes">Discard Changes</h2>
+<p>On single file</p>
+<pre><code>- git checkout -- &lt;FILE_NAME&gt;
+</code></pre>
+<p>All changes</p>
+<pre><code>- git checkout .
+</code></pre>
+<p>Reset to Old Commit</p>
+<pre><code>- git revert &lt;COMMIT&gt;
 </code></pre>
 <h2 id="create-and-move-to-a-new-branch">Create and move to a new branch</h2>
 <p>Move to your command line window and type:</p>
@@ -204,15 +209,51 @@
 
 - git push &lt;remote-name&gt; &lt;branch-name&gt;
 </code></pre>
+<h2 id="list-branch">List branch</h2>
+<p>Move to your command line window and type:</p>
+<pre><code>- 'git branch -a'
+</code></pre>
+<p>If have cloned a new repository with different branches to move to one of those you will need 
+to create a local branch that will track the remote one</p>
+<pre><code>- git checkout -b local_branch_name origin/branch_name
+</code></pre>
 <h2 id="merging">Merging</h2>
 <p>Move from the developing branch to the one which you want to import changesets:</p>
 <pre><code>- 'git merge nameOfTheBranch'
 </code></pre>
 <h2 id="delete-file-from-repo">Delete file from repo</h2>
 <p>Move to your command line window and type:</p>
-<pre><code>- 'git rm fileName'
-
-- git commit -m "remove fileName"
+<pre><code>- git rm file1.txt
+- git commit -m "remove file1.txt"
+</code></pre>
+<p>But if you want to remove the file only from the Git repository and not remove it from the filesystem, use:</p>
+<pre><code>- git rm --cached file1.txt
+</code></pre>
+<h2 id="tag-and-release">Tag and Release</h2>
+<p>Some explanation from the Github Docs
+<a href="https://help.github.com/articles/creating-releases/">Github</a></p>
+<p>Tagging
+    - git tag (listing)
+    - git tag -a v1.4 -m "my version 1.4"
+    - git push --tags
+    - git show v1.4 (showing)</p>
+<h2 id="tips">Tips</h2>
+<p>Commits by author</p>
+<pre><code>- git log --author=USERNAME
+</code></pre>
+<p>Ccompressed log where each commit is one line:</p>
+<pre><code>- git log --pretty=oneline
+</code></pre>
+<p>ASCII art tree of all the branches, decorated with the names of tags and branches:</p>
+<pre><code>- git log --graph --oneline --decorate --all
+</code></pre>
+<p>Git log with file changed</p>
+<pre><code>- git log --name-status
+</code></pre>
+<p>Change permanently log format</p>
+<pre><code>- git config format.pretty oneline
+- git config format.pretty medium
+- git config format.pretty full
 </code></pre></div>
         </div>
 
@@ -225,6 +266,33 @@
         <script src="../js/jquery-1.10.2.min.js"></script>
         <script src="../js/bootstrap-3.0.3.min.js"></script>
         <script src="../js/highlight.pack.js"></script>
+        <script>var base_url = '..';</script>
+        <script data-main="../mkdocs/js/search.js" src="../mkdocs/js/require.js"></script>
         <script src="../js/base.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>
+                            From here you can search these documents. Enter
+                            your search terms below.
+                        </p>
+                        <form role="form">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
+                            </div>
+                        </form>
+                        <div id="mkdocs-search-results"></div>
+                    </div>
+                    <div class="modal-footer">
+                    </div>
+                </div>
+            </div>
+        </div>
     </body>
 </html>
