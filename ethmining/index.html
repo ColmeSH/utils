@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+
+	<title>Eth Mining - UD</title>
+
+        <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../css/font-awesome-4.0.3.css" rel="stylesheet">
+        <link rel="stylesheet" href="../css/highlight.css">
+        <link href="../css/base.css" rel="stylesheet">
+        <link href="../extra.css" rel="stylesheet">
+
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+        
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+            <!-- Main title -->
+            <a class="navbar-brand" href="..">UD</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+            <!-- Main navigation -->
+            <ul class="nav navbar-nav">
+            
+            
+                <li >
+                    <a href="..">Welcome</a>
+                </li>
+            
+            
+            
+                <li >
+                    <a href="../git/">Git Utils</a>
+                </li>
+            
+            
+            
+                <li >
+                    <a href="../grunt/">Grunt Utils</a>
+                </li>
+            
+            
+            
+                <li >
+                    <a href="../mongodb/">Mongo DB Utils</a>
+                </li>
+            
+            
+            
+                <li >
+                    <a href="../laravel/">Laravel Utils</a>
+                </li>
+            
+            
+            
+                <li class="active">
+                    <a href="./">Eth Mining</a>
+                </li>
+            
+            
+            </ul>
+
+            <!-- Search, Navigation and Repo links -->
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                        <i class="fa fa-search"></i> Search
+                    </a>
+                </li>
+                <li >
+                    <a rel="next" href="../laravel/">
+                        <i class="fa fa-arrow-left"></i> Previous
+                    </a>
+                </li>
+                <li class="disabled">
+                    <a rel="prev" >
+                        Next <i class="fa fa-arrow-right"></i>
+                    </a>
+                </li>
+                
+            </ul>
+        </div>
+    </div>
+</div>
+
+        <div class="container">
+            <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+    
+        <li class="main active"><a href="#ethereum-mining">Ethereum Mining</a></li>
+        
+            <li><a href="#introduction">Introduction</a></li>
+        
+            <li><a href="#our-test-environment">Our test environment</a></li>
+        
+            <li><a href="#nvidia-driver-setup">Nvidia driver setup</a></li>
+        
+            <li><a href="#nvidia-cuda-toolkit-setup">Nvidia cuda toolkit setup</a></li>
+        
+            <li><a href="#nvidia-fan">Nvidia fan</a></li>
+        
+            <li><a href="#geth-setup">Geth setup</a></li>
+        
+            <li><a href="#ethminer-setup">Ethminer setup</a></li>
+        
+            <li><a href="#managing-accounts">Managing accounts</a></li>
+        
+            <li><a href="#commands">Commands</a></li>
+        
+            <li><a href="#ethminer-tuning">Ethminer tuning</a></li>
+        
+            <li><a href="#utils">Utils</a></li>
+        
+            <li><a href="#pool-experience">Pool experience</a></li>
+        
+            <li><a href="#eth-proxy">Eth proxy</a></li>
+        
+    
+    </ul>
+</div></div>
+            <div class="col-md-9" role="main">
+
+<h1 id="ethereum-mining">Ethereum Mining</h1>
+<p>Date: 13/03/16, from Turin, Italy with &lt;3.</p>
+<h2 id="introduction">Introduction</h2>
+<p>If your goal is to start mining in pool quickly you can just skip geth installation and start with:</p>
+<pre><code>- graphic card drivers
+- a wallet (google chrome extension --&gt; jaxx --&gt; gives you back a brand new wallet address)
+- ethminer setup
+</code></pre>
+<p>and you can start mining just running:</p>
+<pre><code>- ethminer -G -F
+  http://eth1.nanopool.org:8888/yourAddress/nameOfYourMiner/yourEmailForGetNotifications
+</code></pre>
+<p>We also recommend that you subscribe to a bitcoin exchange to make the purchase of your currency.</p>
+<h2 id="our-test-environment">Our test environment</h2>
+<pre><code>- Intel i5 CPU
+- 12Gb ram
+- SSD 256Gb
+- Nvidia GTX 770 [driver 352.79 - openCL 1.2]
+- 500W power supply
+- Ubuntu 14.04 - 64bit
+</code></pre>
+<h2 id="nvidia-driver-setup">Nvidia driver setup</h2>
+<pre><code>- find out the model of your graphics card:
+  $ sudo lspci -vnn | grep -i VGA -A 12
+
+- check your graphic card drivers:
+  http://www.nvidia.com/Download/index.aspx
+
+- add xorg-edgers ppa that provides very latest nvidia
+  drivers:
+  $ sudo add-apt-repository ppa:xorg-edgers/ppa -y
+  $ sudo apt-get update
+
+- grab your drivers with:
+  $ sudo apt-get install nvidia-352
+</code></pre>
+<h2 id="nvidia-cuda-toolkit-setup">Nvidia cuda toolkit setup</h2>
+<pre><code>- download cuda drivers:
+  https://developer.nvidia.com/cuda-downloads
+  select Linux, x86_64, Ubuntu, 14_04 and Deb(local)
+
+- move to your download folder:
+  $ sudo dpkg -i cuda-repo-ubuntu1404_7.5-18_amd64.deb
+  $ sudo apt-get update
+  $ sudo apt-get install cuda
+
+- reboot the system
+</code></pre>
+<h2 id="nvidia-fan">Nvidia fan</h2>
+<pre><code>- sudo nvidia-xconfig
+- sudo nvidia-xconfig --cool-bits=4
+- reboot system
+</code></pre>
+<p>or</p>
+<pre><code>- sudo apt-get install nvclock
+- nvclock -f -F 70 (to change GPU fan speed 70%)
+</code></pre>
+<h2 id="geth-setup">Geth setup</h2>
+<p>Geth is used to insert your machine as a node in the Ethereum network.
+You will be able to create a new local account (wallet) and contribute with Ethminer software in the transaction validation process.</p>
+<pre><code>- you need a good editor and git installed on your system
+  $ sudo apt-get install vim
+  $ sudo apt-get install git
+
+- move to your desktop and create a folder:
+  $ mkdir go-ethereum
+  $ cd go-ethereum
+  $ git clone https://github.com/ethereum/go-ethereum
+  $ sudo apt-get install -y build-essential libgmp3-dev golang
+
+- add some tuning and environment variables:
+  $ export GO_OPENCL=true
+  $ export GPU_MAX_ALLOC_PERCENT=95
+
+- compile geth:
+  $ cd go-ethereum
+  $ make geth
+
+- if everything goes well try in the same folder:
+  $ build/bin/geth gpuinfo
+  and you will be able to see your graphic card infos
+</code></pre>
+<h2 id="ethminer-setup">Ethminer setup</h2>
+<pre><code>- sudo add-apt-repository ppa:ethereum/ethereum-qt
+  sudo add-apt-repository ppa:ethereum/ethereum
+  sudo add-apt-repository ppa:ethereum/ethereum-dev
+  sudo apt-get update
+  sudo apt-get install cpp-ethereum
+</code></pre>
+<h2 id="managing-accounts">Managing accounts</h2>
+<p>Your account is the place where you will be rewarded for your contribution in the transaction validation process.</p>
+<p>You can create an account ("wallet") in different ways locally with geth or with third part services like an amazing Google Chrome extension called jaxx.</p>
+<p>Those will provide you an address that you will use to mine, because the reward has to be store somewhere.</p>
+<p>Locally</p>
+<pre><code>- move to: $ cd ~/Desktop/go-ethereum/go-ethereum
+  and: $ ~/Desktop/go-ethereum/go-ethereum build/bin/geth account new
+</code></pre>
+<h2 id="commands">Commands</h2>
+<p>Set of useful commands</p>
+<pre><code>- move to:
+  $ cd ~/Desktop/go-ethereum/go-ethereum
+  and start the geth console:
+  $ ~/Desktop/go-ethereum/go-ethereum build/bin/geth --fast
+  (starting up your local node and blockchain sync)
+
+- open a new terminal tab:
+  $ cd ~/Desktop/go-ethereum/go-ethereum build/bin/geth attach
+  (opening in a new tab the geth console)
+</code></pre>
+<p>In the geth console</p>
+<pre><code>- &gt; web3.eth.coinbase (checking your account address)
+- &gt; web3.fromWei(eth.getBalance(eth.coinbase), "ether") (check your wallet balance)
+</code></pre>
+<p>If you started the local node with geth in a new terminal tab you can start mining in solo mode with ethminer</p>
+<pre><code>- $ ethminer -G -M (gpu benchmark, not require geth running)
+- $ ethminer -G (start only when geth --fast console print out that the sync has been finish)
+</code></pre>
+<p>To start pool mining (that means to attach your hash rate to other people and have also partials reward)</p>
+<pre><code>- ethminer -G -F
+  http://eth1.nanopool.org:8888/yourAddress/nameOfYourMiner/yourEmailForGetNotifications
+  (not requiere geth running)
+</code></pre>
+<h2 id="ethminer-tuning">Ethminer tuning</h2>
+<p>Reading on the internet we find out some interesting ethminer configuration.
+When running ethminer add this for nvidia cards:</p>
+<pre><code>- --cl-global-work 16384 (4096 or 8192 for CUDA mode)
+  —-cl-local-work 64, 128 or 256 depending on card (128 for CUDA mode)
+  -—farm-recheck 200 according to most pools.
+</code></pre>
+<p>So the command could be:</p>
+<pre><code>- ethminer -G -F
+  http://eth1.nanopool.org:8888/yourAddress/nameOfYourMiner/yourEmailForGetNotifications --cl-local-work 128 --cl-global-work 4096 --farm-recheck 200
+</code></pre>
+<h2 id="utils">Utils</h2>
+<p>As already mentioned a good idea could be signing up in a crypto currency exchange on the internet so you can change your ethereum reward in bitcoin or $, €, etc. like</p>
+<pre><code>- https://www.kraken.com
+- https://poloniex.com/
+- https://www.bitfinex.com/
+</code></pre>
+<p>Some links</p>
+<pre><code>- https://ethereum.gitbooks.io/frontier-guide/content/getting_a_client.html
+- http://nanopool.org/help
+</code></pre>
+<h2 id="pool-experience">Pool experience</h2>
+<p>We are active in different telegram chat and chatting with other miners the most mentioned pool service are:</p>
+<pre><code>- http://dwarfpool.com/
+- https://eth.suprnova.cc/
+- http://nanopool.org/
+- http://weipool.org/
+- http://ethpool.org/
+- https://ethereumpool.co/
+- http://eth.unitedminers.cloud/
+</code></pre>
+<h2 id="eth-proxy">Eth proxy</h2>
+<p>Since we have not had much luck with nanopool even if their assistance is very good we decided to try Dwarfpool</p>
+<p>PLUS,</p>
+<p>according to their documentation, Stratum-Proxy for Ethereum.</p>
+<p>You just need to:</p>
+<pre><code>- clone the repository into your Desktop or wherever:
+  $ git clone https://github.com/Atrides/eth-proxy.git
+- install dependency with:
+  $ sudo apt-get install python-twisted
+- move inside the repository folder and change the config data in ethproxy.conf like this:
+  $ sudo vim ethproxy.conf
+
+  # Select Ethereum ETH or Expanse EXP
+  COIN = "ETH"
+
+  # Host and port for your workers
+  HOST = "0.0.0.0"
+  PORT = 8080
+
+  # Coin address where money goes
+  WALLET = "yourWallet"
+
+  # To donate please use wallet "0xea7263feb7d8a8ab0a11eedd8f1ce04412ab0820"
+
+  # It's useful for individually monitoring and statistic
+  ENABLE_WORKER_ID = True
+
+  # On DwarfPool you have option to monitor your workers via email.
+  # If WORKER_ID is enabled, you can monitor every worker/rig separately.
+  MONITORING = True
+  MONITORING_EMAIL = "yourEmail"
+
+  # Main pool
+  POOL_HOST = "eth-eu.dwarfpool.com"
+  POOL_PORT = 8008
+
+  # Failover pool
+  POOL_FAILOVER_ENABLE = True
+
+  POOL_HOST_FAILOVER1 = "eth-ru.dwarfpool.com"
+  POOL_PORT_FAILOVER1 = 8008
+
+  POOL_HOST_FAILOVER2 = "eth-us.dwarfpool.com"
+  POOL_PORT_FAILOVER2 = 8008
+
+  POOL_HOST_FAILOVER3 = "eth-hk.dwarfpool.com"
+  POOL_PORT_FAILOVER3 = 8008
+
+  # Logging
+  LOG_TO_FILE = True
+
+  # Enable debug
+  DEBUG = False
+
+- save it, close it and run it from the repository folder with:
+  $ python ethproxy.py
+
+- run your miner with:
+  ethminer -G -F http://127.0.0.1:8080 --cl-local-work 128 --cl-global-work 4096 --farm-recheck 200
+</code></pre>
+<p>Releated link:</p>
+<pre><code>- https://bitcointalk.org/index.php?topic=1200891
+- https://github.com/Atrides/eth-proxy
+</code></pre></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            
+            <center>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</center>
+        </footer>
+
+        <script src="../js/jquery-1.10.2.min.js"></script>
+        <script src="../js/bootstrap-3.0.3.min.js"></script>
+        <script src="../js/highlight.pack.js"></script>
+        <script>var base_url = '..';</script>
+        <script data-main="../mkdocs/js/search.js" src="../mkdocs/js/require.js"></script>
+        <script src="../js/base.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>
+                            From here you can search these documents. Enter
+                            your search terms below.
+                        </p>
+                        <form role="form">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
+                            </div>
+                        </form>
+                        <div id="mkdocs-search-results"></div>
+                    </div>
+                    <div class="modal-footer">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
