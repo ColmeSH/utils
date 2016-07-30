@@ -5,19 +5,7 @@ You will find useful tips for Git, MongoDB and more...
 
 ## Requirements
 
-    MAC OSX or a linux based OS
-
-## Useful Links for Installation and More
-
-[Git](https://git-scm.com/)
-
-[Grunt](http://gruntjs.com/getting-started)
-
-[MongoDB](http://docs.mongodb.org/manual/tutorial/install-mongodb-on-os-x/)
-
-[Python](https://www.python.org/)
-
-[MKDOCS](http://www.mkdocs.org/)
+MAC OSX or a linux based OS, [Python](https://www.python.org/) and [MKDOCS](http://www.mkdocs.org/)
 
 ## Contributing
 

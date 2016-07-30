@@ -56,12 +56,20 @@ Move to your command line window and type:
 Move to your command line window and type:
 
     - 'git status'
+    
+## Discard Changes
 
-## List branch
+On single file
 
-Move to your command line window and type:
+    - git checkout -- <FILE_NAME>
+    
+All changes
 
-    - 'git branch -a'
+    - git checkout .
+    
+Reset to Old Commit
+
+    - git revert <COMMIT>
 
 ## Create and move to a new branch
 
@@ -71,16 +79,69 @@ Move to your command line window and type:
 
     - git push <remote-name> <branch-name>
 
+## List branch
+
+Move to your command line window and type:
+
+    - 'git branch -a'
+    
+If have cloned a new repository with different branches to move to one of those you will need 
+to create a local branch that will track the remote one
+
+    - git checkout -b local_branch_name origin/branch_name
+
 ## Merging
 
 Move from the developing branch to the one which you want to import changesets:
 
     - 'git merge nameOfTheBranch'
 
-## Delete file from repo  
+## Delete file from repo
 
 Move to your command line window and type:
 
-    - 'git rm fileName'
+    - git rm file1.txt
+    - git commit -m "remove file1.txt"
 
-    - git commit -m "remove fileName"
+But if you want to remove the file only from the Git repository and not remove it from the filesystem, use:
+
+    - git rm --cached file1.txt
+      
+## Tag and Release
+
+Some explanation from the Github Docs
+[Github](https://help.github.com/articles/creating-releases/)
+
+Tagging
+    - git tag (listing)
+    - git tag -a v1.4 -m "my version 1.4"
+    - git push --tags
+    - git show v1.4 (showing)
+
+## Tips
+
+Commits by author
+
+    - git log --author=USERNAME
+
+Ccompressed log where each commit is one line:
+
+    - git log --pretty=oneline
+
+ASCII art tree of all the branches, decorated with the names of tags and branches:
+
+    - git log --graph --oneline --decorate --all
+
+Git log with file changed
+    
+    - git log --name-status
+
+Change permanently log format
+
+    - git config format.pretty oneline
+    - git config format.pretty medium
+    - git config format.pretty full
+
+
+
+

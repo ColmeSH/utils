@@ -19,41 +19,19 @@ Create a new virgin laravel project with
 
     - composer create-project laravel/laravel NAME
 
-##Homestead
+##Laravel Vagrant
 
 Laravel ready environment.
 You will need installed
 
     - virtualbox
     - vagrant
+    - ansible 2+
 
-Add the homestead vagrant box with
+Suggested repositories
 
-    - vagrant box add laravel/homestead
-
-Install homestead with composer
-
-    - composer global require "laravel/homestead=~2.0"
-
-Be sure to add the PATH to your bash or zsh profile in order to use homestead
-
-    - export PATH:~/.composer/vendor/bin:$PATH
-
-Try to run homestead and you will see all the commands available
-
-    - homestead
-
-Check .homestead folder ~ or the configuration with
-
-    - homestead edit
-
-[PROBLEMS] - 500 server error, nginx has permission problems
-
-Laracasts is using homestead like this
-
-    - serve domain path
-
-but its searching for a file called serve.sh and I have serve-laravel and I can't cp it
+    - https://github.com/andreafspeziale/laravel_vagrant
+    - https://github.com/gab88slash/vagrant-modern-php-development
 
 ##Structure
 
@@ -362,3 +340,121 @@ and create the view
             </article>
         @endforeach
     @stop
+
+##Defining Relationships With Eloquent
+We have for instance a Card which has many Notes. 
+Each Note was wtitten by a User.
+
+You can see below the models that describes those relationships:
+
+    - Card Model
+    class Card extends Model
+    {
+        public function notes()
+        {
+            return $this->hasMany(Note::class);
+        }
+        
+        public function addNote(Note $note, $userId)
+        {
+            $note->user_id = $userId;
+            return $this->notes()->save($note);
+        }
+    }
+    
+    - Note Model
+    class Note extends Model
+    {
+        protected $fillable = ['body'];
+    
+        public function card()
+        {
+            return $this->belongsTo(Card::class);
+        }
+    
+        public function user()
+        {
+            return $this->belongsTo(User::class);
+        }
+        
+        public function by(User $user)
+        {
+            $this->user_id = $user->id;
+        }
+    }
+
+##Forms & Validation
+Let's add a Note to a Card for instance:
+
+    - add a posting route
+    Route::post('cards/{card}/notes', 'NotesController@store');
+    
+    - add a form from the view
+    <h3>Add a new note</h3>
+        <form action="/cards/{{ $card->id }}/notes" method="POST">
+            {{-- showing the token --}}
+            {!! csrf_token() !!}
+            <div class="form-group">
+                <textarea name="body" class="form-control">{{ old('body') }}</textarea>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-default pull-right">Add note</button>
+            </div>
+            {{-- this include the generated token in the request --}}
+            {!! csrf_field() !!}
+        </form>
+        {{-- checking the validation exception message --}}
+        {{-- {{ var_dump($errors) }} --}}
+        @if(count($errors))
+            <ul>
+                @foreach($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        @endif
+        
+    - from the posting route by the store method
+    public function store(Request $request, Card $card)
+        {
+            $this->validate($request, [
+                'body' => 'required|min:10'
+            ]);
+    
+            $note = New Note($request->all());
+    
+            $card->addNote($note, 1);
+            return back();
+        }
+        
+##Updating Record
+Let's try to update a Note
+
+    - add a get and patch route to serve the update page and perform action 
+    Route::get('notes/{note}/edit', 'NotesController@edit');
+    Route::patch('notes/{note}', 'NotesController@update');
+        
+    - edit form from the edit note page
+    <form action="/notes/{{ $note->id }}" method="POST">
+        {{ method_field('PATCH') }}
+        <div class="form-group">
+            <textarea name="body" class="form-control">{{ $note->body }}</textarea>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-default pull-right">Update note</button>
+        </div>
+        {!! csrf_field() !!}
+    </form>
+    
+    - and the methods in the controller
+    public function edit(Note $note)
+    {
+        return view('notes.edit', compact('note'));
+    }
+
+    public function update(Request $request, Note $note)
+    {
+        $note->update($request->all());
+        return back();
+    }
+
+##Authenticate Your Users
