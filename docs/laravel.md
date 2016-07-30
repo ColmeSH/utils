@@ -494,9 +494,9 @@ You should see something like
       Content-Transfer-Encoding: quoted-printable
       
       Click here to reset your password: 
-      <a href="http://localhost:8080/password/reset/5d09c9f1640669def46092bbecc8c02949be8b51bd1a1c49a180dea5613e1b9c?email=andreaf.speziale%40gmail.com"> http://localhost:8080/password/reset/5d09c9f1640669def46092bbecc8c02949be8b51bd1a1c49a180dea5613e1b9c?email=andreaf.speziale%40gmail.com </a>
+      <a href="http://localhost:8080/password/reset/5d09c9f1640669def46092bbecc8c02949be8b51bd1a1c49a180dea5613e1b9c?email=registeredMail%40gmail.com"> http://localhost:8080/password/reset/5d09c9f1640669def46092bbecc8c02949be8b51bd1a1c49a180dea5613e1b9c?email=registeredMail%40gmail.com </a>
 
-If you copy on your browser the <a> link you will be redirect to the password reset page
+If you copy on your browser the link you will be redirect to the password reset page
 
 Notice that in your routes file laravel added 
 
