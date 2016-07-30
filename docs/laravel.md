@@ -226,6 +226,7 @@ A fast way to update
         - $article->update(['body' => 'Updated!!']); //filling and saving it
 
 ##Basic model/controller/view workflow
+
 Different way to create routes
 
 For small stuff you can create directly from route file something like
@@ -342,6 +343,7 @@ and create the view
     @stop
 
 ##Defining Relationships With Eloquent
+
 We have for instance a Card which has many Notes. 
 Each Note was wtitten by a User.
 
@@ -384,6 +386,7 @@ You can see below the models that describes those relationships:
     }
 
 ##Forms & Validation
+
 Let's add a Note to a Card for instance:
 
     - add a posting route
@@ -427,6 +430,7 @@ Let's add a Note to a Card for instance:
         }
         
 ##Updating Record
+
 Let's try to update a Note
 
     - add a get and patch route to serve the update page and perform action 
@@ -458,3 +462,52 @@ Let's try to update a Note
     }
 
 ##Authenticate Your Users
+
+Basic login/registration, usually is done at the very beginning of your project
+
+    - php artisan make:auth
+    - php artisan migrate
+    
+Now you should be ready to test the laravel register and login out of the box functions
+
+To test the forgotten psw e-mail you should change your local .env like this
+
+    - MAIL_DRIVER=log
+    
+Setup also from config/mail.php
+ 
+    - 'from' => ['address' => 'yourmail@something.something', 'name' => 'My Company Support']
+    
+Now if you try to restore your password it will run using your registration e-mail 
+but you wont receive any e-mail, you will be able to check in
+
+    - more storage/logs/laravel.log or tail -f storage/logs/laravel.log
+    
+You should see something like
+
+    - Date: Sat, 30 Jul 2016 14:37:53 +0000
+      Subject: Your Password Reset Link
+      From: Andrea Speziale Mail <andreaf.speziale@gmail.com>
+      To: andreaf.speziale@gmail.com
+      MIME-Version: 1.0
+      Content-Type: text/html; charset=utf-8
+      Content-Transfer-Encoding: quoted-printable
+      
+      Click here to reset your password: 
+      <a href="http://localhost:8080/password/reset/5d09c9f1640669def46092bbecc8c02949be8b51bd1a1c49a180dea5613e1b9c?email=andreaf.speziale%40gmail.com"> http://localhost:8080/password/reset/5d09c9f1640669def46092bbecc8c02949be8b51bd1a1c49a180dea5613e1b9c?email=andreaf.speziale%40gmail.com </a>
+
+If you copy on your browser the <a> link you will be redirect to the password reset page
+
+Notice that in your routes file laravel added 
+
+    - Route::auth();
+    
+In Router.php searching for auth you will find all the route
+
+If you need to override something you will find everything in
+
+    - Http/Controller/auth
+    
+All the views are stored in
+
+    - Resources/views/auth
