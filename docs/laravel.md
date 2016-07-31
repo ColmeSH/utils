@@ -511,3 +511,95 @@ If you need to override something you will find everything in
 All the views are stored in
 
     - Resources/views/auth
+    
+##Middleware
+
+Your application is like an onion, so when a request arrives it goes through this onion before gettin' into the core.
+Those layers are the middleware.
+
+For instance the middleware group WEB
+
+    - app/Http/Kernel
+    'web' => [
+        \App\Http\Middleware\EncryptCookies::class,
+        \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
+        \Illuminate\Session\Middleware\StartSession::class,
+        \Illuminate\View\Middleware\ShareErrorsFromSession::class,
+        \App\Http\Middleware\VerifyCsrfToken::class,
+    ],
+    
+The request will pass through those action
+
+    - EncryptCookies
+    - AddQueuedCookiesToResponse
+    - StartSession
+    - ShareErrorsFromSession -> this make the var $errors in each view real
+    - VerifyCsrfToken -> generates the hiddend input in the forms {{ csrf_field() }}
+    
+Each middleware class has a handle class
+
+    - public function handle
+    
+responsible for processing the request in someway and pass it to the next layer.
+
+Usually we make some kind of check and then we will pass it to the next level of the onion or abort.
+
+We have also GLOBAL Middleware that will be used for every single request like
+
+    - \Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode::class,
+    
+This is checking if the website is in Maintenance Mode, you can try to put it in with
+
+    - php artisan down
+    
+To restore 
+
+    - php artisan down
+    
+Or we have optional middleware called ROUTE Middleware, you can create a middleware with artisan like this
+
+    - php artisan make:middleware MustBeAdministrator
+
+For instance
+
+    <?php
+    
+    namespace App\Http\Middleware;
+    
+    use Closure;
+    
+    public function handle($request, Closure $next)
+    {
+        /*
+         * If signed u will get the signed user if not you will get null
+         * */
+
+        $user = $request->user();
+
+        /*
+         * Checking if is admin
+         * if($user && $user->isAdmin)
+         * */
+        if($user && $user->username == 'JohnAdministratorDoe'){
+            return $next($request);
+        }
+
+        /*
+         * If not aborting it
+         * */
+        abort(404, 'No way.');
+    }
+        
+Go to
+
+    - app/Http/kernel.php
+    protected $routeMiddleware = [
+        'auth' => \App\Http\Middleware\Authenticate::class,
+        'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
+        'can' => \Illuminate\Foundation\Http\Middleware\Authorize::class,
+        'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
+        'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
+        'admin' => \App\Http\Middleware\MustBeAdministrator::class
+    ];
+    
+## Session Messages
