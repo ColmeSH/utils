@@ -149,6 +149,10 @@
         
             <li><a href="#authenticate-your-users">Authenticate Your Users</a></li>
         
+            <li><a href="#middleware">Middleware</a></li>
+        
+            <li><a href="#session-messages">Session Messages</a></li>
+        
     
     </ul>
 </div></div>
@@ -586,7 +590,85 @@ but you wont receive any e-mail, you will be able to check in</p>
 </code></pre>
 <p>All the views are stored in</p>
 <pre><code>- Resources/views/auth
-</code></pre></div>
+</code></pre>
+<h2 id="middleware">Middleware</h2>
+<p>Your application is like an onion, so when a request arrives it goes through this onion before gettin' into the core.
+Those layers are the middleware.</p>
+<p>For instance the middleware group WEB</p>
+<pre><code>- app/Http/Kernel
+'web' =&gt; [
+    \App\Http\Middleware\EncryptCookies::class,
+    \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
+    \Illuminate\Session\Middleware\StartSession::class,
+    \Illuminate\View\Middleware\ShareErrorsFromSession::class,
+    \App\Http\Middleware\VerifyCsrfToken::class,
+],
+</code></pre>
+<p>The request will pass through those action</p>
+<pre><code>- EncryptCookies
+- AddQueuedCookiesToResponse
+- StartSession
+- ShareErrorsFromSession -&gt; this make the var $errors in each view real
+- VerifyCsrfToken -&gt; generates the hiddend input in the forms {{ csrf_field() }}
+</code></pre>
+<p>Each middleware class has a handle class</p>
+<pre><code>- public function handle
+</code></pre>
+<p>responsible for processing the request in someway and pass it to the next layer.</p>
+<p>Usually we make some kind of check and then we will pass it to the next level of the onion or abort.</p>
+<p>We have also GLOBAL Middleware that will be used for every single request like</p>
+<pre><code>- \Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode::class,
+</code></pre>
+<p>This is checking if the website is in Maintenance Mode, you can try to put it in with</p>
+<pre><code>- php artisan down
+</code></pre>
+<p>To restore </p>
+<pre><code>- php artisan down
+</code></pre>
+<p>Or we have optional middleware called ROUTE Middleware, you can create a middleware with artisan like this</p>
+<pre><code>- php artisan make:middleware MustBeAdministrator
+</code></pre>
+<p>For instance</p>
+<pre><code>&lt;?php
+
+namespace App\Http\Middleware;
+
+use Closure;
+
+public function handle($request, Closure $next)
+{
+    /*
+     * If signed u will get the signed user if not you will get null
+     * */
+
+    $user = $request-&gt;user();
+
+    /*
+     * Checking if is admin
+     * if($user &amp;&amp; $user-&gt;isAdmin)
+     * */
+    if($user &amp;&amp; $user-&gt;username == 'JohnAdministratorDoe'){
+        return $next($request);
+    }
+
+    /*
+     * If not aborting it
+     * */
+    abort(404, 'No way.');
+}
+</code></pre>
+<p>Go to</p>
+<pre><code>- app/Http/kernel.php
+protected $routeMiddleware = [
+    'auth' =&gt; \App\Http\Middleware\Authenticate::class,
+    'auth.basic' =&gt; \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
+    'can' =&gt; \Illuminate\Foundation\Http\Middleware\Authorize::class,
+    'guest' =&gt; \App\Http\Middleware\RedirectIfAuthenticated::class,
+    'throttle' =&gt; \Illuminate\Routing\Middleware\ThrottleRequests::class,
+    'admin' =&gt; \App\Http\Middleware\MustBeAdministrator::class
+];
+</code></pre>
+<h2 id="session-messages">Session Messages</h2></div>
         </div>
 
         <footer class="col-md-12">
