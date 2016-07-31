@@ -7,5 +7,5 @@ pages:
     - [laravel.md, Laravel Utils]
     - [ethmining.md, Eth Mining]
 
-theme: yeti
+theme: readthedocs
 extra_css: [extra.css]
