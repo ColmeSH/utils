@@ -683,6 +683,75 @@ protected $routeMiddleware = [
 ];
 </code></pre>
 <h2 id="session-messages">Session Messages</h2>
+<p>A first approach could be passing through the routes</p>
+<pre><code>- Route::get('/', function () {
+      Session::flash('status', 'Hello there');
+      return view('welcome');
+  });
+</code></pre>
+<p>and display it in the welcome view</p>
+<pre><code>- resources/view/welcome.blade.php
+&lt;body&gt;
+    &lt;div class="container"&gt;
+        @if(Session::has('status'))
+            &lt;h3&gt;
+                {{ Session::get('status') }}
+            &lt;/h3&gt;
+        @endif
+        &lt;div class="content"&gt;
+            &lt;div class="title"&gt;Laravel 5&lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+</code></pre>
+<p>But it will be always there and for messages purpose don't make any sense, so
+you could try to add a dumby route and display the message only for that request 
+(actually if u then try to refresh the page it will disappear)</p>
+<pre><code>- Route::get('/begin', function () {
+      Session::flash('status', 'Hello there');
+      return redirect('/');
+  });
+</code></pre>
+<p>For session messages you can use global helpers like the redirect('/') in different ways</p>
+<pre><code>- session(['foo'=&gt;'bar']); = Session::put('foo', 'bar');
+- session()-&gt;flash('status', 'Here is my status');
+</code></pre>
+<p>Flash messages can have dynamic class, we could have a helper file with some functions like</p>
+<pre><code>- app/helpers.php
+&lt;?php
+    function flash($message, $level = 'info') {
+            session()-&gt;flash('flash_message', $message);
+            session()-&gt;flash('flash_level', $level);
+        }
+</code></pre>
+<p>We have to add this file to our composer autoload</p>
+<pre><code>- navigate to composer.json
+- "autoload": {
+      "classmap": [
+          "database"
+      ],
+      "psr-4": {
+          "App\\": "app/"
+      },
+      "files": [
+          "app/helpers.php"
+      ]
+  },
+- $composer dump-autoload
+
+- in routes file we should have
+- Route::get('/begin', function () {
+    flash('Now your are signed in!', 'success');
+    return redirect('/');
+});
+
+- if you defined for example an .aler--Succes with some green backgroud
+- @if(session()-&gt;has('status'))
+    &lt;h3 class="alert--{{ ucwords(session('flash_leve')) }}"&gt;
+        {{ session('flash_message') }}
+    &lt;/h3&gt;
+</code></pre>
+<p>We could also add it to a partial layout creating a flash.blade.php and @include('flash')</p>
               
             </div>
           </div>
