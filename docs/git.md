@@ -141,7 +141,7 @@ Change permanently log format
     - git config format.pretty oneline
     - git config format.pretty medium
     - git config format.pretty full
-
-
-
-
+    
+Alias a super cool log visualization editing your .zshrc (I'm actually using zsh and not bash)
+ 
+    - alias glp="git log --pretty='format:%Cgreen%H%Creset %an %Cblue%aD%Creset -     %s' --graph"

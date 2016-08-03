@@ -603,3 +603,80 @@ Go to
     ];
     
 ## Session Messages
+
+A first approach could be passing through the routes
+
+    - Route::get('/', function () {
+          Session::flash('status', 'Hello there');
+          return view('welcome');
+      });
+      
+and display it in the welcome view
+
+    - resources/view/welcome.blade.php
+    <body>
+        <div class="container">
+            @if(Session::has('status'))
+                <h3>
+                    {{ Session::get('status') }}
+                </h3>
+            @endif
+            <div class="content">
+                <div class="title">Laravel 5</div>
+            </div>
+        </div>
+    </body>
+
+But it will be always there and for messages purpose don't make any sense, so
+you could try to add a dumby route and display the message only for that request 
+(actually if u then try to refresh the page it will disappear)
+
+    - Route::get('/begin', function () {
+          Session::flash('status', 'Hello there');
+          return redirect('/');
+      });
+      
+For session messages you can use global helpers like the redirect('/') in different ways
+
+    - session(['foo'=>'bar']); = Session::put('foo', 'bar');
+    - session()->flash('status', 'Here is my status');
+    
+Flash messages can have dynamic class, we could have a helper file with some functions like
+
+    - app/helpers.php
+    <?php
+        function flash($message, $level = 'info') {
+                session()->flash('flash_message', $message);
+                session()->flash('flash_level', $level);
+            }
+            
+We have to add this file to our composer autoload
+
+    - navigate to composer.json
+    - "autoload": {
+          "classmap": [
+              "database"
+          ],
+          "psr-4": {
+              "App\\": "app/"
+          },
+          "files": [
+              "app/helpers.php"
+          ]
+      },
+    - $composer dump-autoload  
+    
+    - in routes file we should have
+    - Route::get('/begin', function () {
+        flash('Now your are signed in!', 'success');
+        return redirect('/');
+    });
+    
+    - if you defined for example an .aler--Succes with some green backgroud
+    - @if(session()->has('status'))
+        <h3 class="alert--{{ ucwords(session('flash_leve')) }}">
+            {{ session('flash_message') }}
+        </h3>
+      
+We could also add it to a partial layout creating a flash.blade.php and @include('flash')
+
