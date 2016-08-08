@@ -680,3 +680,74 @@ We have to add this file to our composer autoload
       
 We could also add it to a partial layout creating a flash.blade.php and @include('flash')
 
+## Dependency Inj - Factories
+
+    - routes.php
+    - <?php
+    class Mailer {
+    }
+    
+    class RegistersUsers {
+        protected $mailer;
+        // construct inj
+        public function __construct(Mailer $mailer) {
+            $this->mailer = $mailer;
+        }
+        // method inj
+        public function setMailer(Mailer $mailer) {
+            $this->mailer = $mailer;
+        }
+        
+    }
+    
+So you will have to do
+
+    - $registration = new RegistersUsers(new Mailer());
+    
+and so on if Mailer has dependencies!
+
+The best way is to use Factories = building an obj
+
+or 
+
+Laravel Service Container, this is what its doing behind the scenes
+
+    - App::bind('RegistersUsers', funciton() {
+        return new RegistersUsers(new Mailer());
+    })
+    
+    - app('RegistersUsers'); // taking an istance with app helper
+    
+Bind will create a new instance each time
+    
+Singleton
+
+    - App::singleton('RegistersUsers', funciton() {
+            return new RegistersUsers(new Mailer());
+        })
+        
+Singleton will create a new instance and always we will refer to the same one
+        
+## Bootstrapping With Service Providers
+
+The point of entry of your project resources
+
+    - php artisan make:provider FooProvider
+    
+    - rgister them self into the framework with the register function
+    
+Ones you have your provider you have to add it in
+
+    - config/app
+    
+like this
+
+    - App/Providers/FooProvider::class
+    
+The framework will use first the register method and then the boot one!
+
+A tip*
+
+    - DB::listen(function($query){
+        var_dump($query->sql, $query->bindings);
+    })
