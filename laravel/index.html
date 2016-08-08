@@ -127,6 +127,10 @@
                 
                     <li><a class="toctree-l4" href="#session-messages">Session Messages</a></li>
                 
+                    <li><a class="toctree-l4" href="#dependency-inj-factories">Dependency Inj - Factories</a></li>
+                
+                    <li><a class="toctree-l4" href="#bootstrapping-with-service-providers">Bootstrapping With Service Providers</a></li>
+                
             
             </ul>
         
@@ -752,6 +756,63 @@ you could try to add a dumby route and display the message only for that request
     &lt;/h3&gt;
 </code></pre>
 <p>We could also add it to a partial layout creating a flash.blade.php and @include('flash')</p>
+<h2 id="dependency-inj-factories">Dependency Inj - Factories</h2>
+<pre><code>- routes.php
+- &lt;?php
+class Mailer {
+}
+
+class RegistersUsers {
+    protected $mailer;
+    // construct inj
+    public function __construct(Mailer $mailer) {
+        $this-&gt;mailer = $mailer;
+    }
+    // method inj
+    public function setMailer(Mailer $mailer) {
+        $this-&gt;mailer = $mailer;
+    }
+
+}
+</code></pre>
+<p>So you will have to do</p>
+<pre><code>- $registration = new RegistersUsers(new Mailer());
+</code></pre>
+<p>and so on if Mailer has dependencies!</p>
+<p>The best way is to use Factories = building an obj</p>
+<p>or </p>
+<p>Laravel Service Container, this is what its doing behind the scenes</p>
+<pre><code>- App::bind('RegistersUsers', funciton() {
+    return new RegistersUsers(new Mailer());
+})
+
+- app('RegistersUsers'); // taking an istance with app helper
+</code></pre>
+<p>Bind will create a new instance each time</p>
+<p>Singleton</p>
+<pre><code>- App::singleton('RegistersUsers', funciton() {
+        return new RegistersUsers(new Mailer());
+    })
+</code></pre>
+<p>Singleton will create a new instance and always we will refer to the same one</p>
+<h2 id="bootstrapping-with-service-providers">Bootstrapping With Service Providers</h2>
+<p>The point of entry of your project resources</p>
+<pre><code>- php artisan make:provider FooProvider
+
+- rgister them self into the framework with the register function
+</code></pre>
+<p>Ones you have your provider you have to add it in</p>
+<pre><code>- config/app
+</code></pre>
+<p>like this</p>
+<pre><code>- App/Providers/FooProvider::class
+</code></pre>
+<p>The framework will use first the register method and then the boot one!</p>
+<p>A tip*</p>
+<pre><code>- DB::listen(function($query){
+    var_dump($query-&gt;sql, $query-&gt;bindings);
+})
+</code></pre>
               
             </div>
           </div>
