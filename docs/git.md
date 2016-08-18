@@ -56,17 +56,17 @@ Move to your command line window and type:
 Move to your command line window and type:
 
     - 'git status'
-    
+
 ## Discard Changes
 
 On single file
 
     - git checkout -- <FILE_NAME>
-    
+
 All changes
 
     - git checkout .
-    
+
 Reset to Old Commit
 
     - git revert <COMMIT>
@@ -84,8 +84,8 @@ Move to your command line window and type:
 Move to your command line window and type:
 
     - 'git branch -a'
-    
-If have cloned a new repository with different branches to move to one of those you will need 
+
+If have cloned a new repository with different branches to move to one of those you will need
 to create a local branch that will track the remote one
 
     - git checkout -b local_branch_name origin/branch_name
@@ -106,13 +106,14 @@ Move to your command line window and type:
 But if you want to remove the file only from the Git repository and not remove it from the filesystem, use:
 
     - git rm --cached file1.txt
-      
+
 ## Tag and Release
 
 Some explanation from the Github Docs
 [Github](https://help.github.com/articles/creating-releases/)
 
 Tagging
+
     - git tag (listing)
     - git tag -a v1.4 -m "my version 1.4"
     - git push --tags
@@ -133,7 +134,7 @@ ASCII art tree of all the branches, decorated with the names of tags and branche
     - git log --graph --oneline --decorate --all
 
 Git log with file changed
-    
+
     - git log --name-status
 
 Change permanently log format
@@ -141,7 +142,7 @@ Change permanently log format
     - git config format.pretty oneline
     - git config format.pretty medium
     - git config format.pretty full
-    
+
 Alias a super cool log visualization editing your .zshrc (I'm actually using zsh and not bash)
- 
+
     - alias glp="git log --pretty='format:%Cgreen%H%Creset %an %Cblue%aD%Creset -     %s' --graph"
